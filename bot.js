@@ -33,8 +33,8 @@ client.on('message', msg => {
         icon_url: client.user.avatarURL
       },
       title: "Bot HELP Service",
-      description: "I'm only online when Alados5 boots me. "+
-      "Maybe I'll be able to run 24/7 one day! \n You can call me with these commands:",
+      description: "I'm only online when Alados5 wants. "+
+      "Now I'm trying to run 24/7! If you see me online, ask why! \n You can call me with these commands:",
       footer: {
         text: "I'm a bot created by Alados5",
         icon_url: client.user.avatarURL
@@ -61,6 +61,37 @@ client.on('message', msg => {
     }})
   }
 
+  if(command == 'save') {
+    if(isNaN(args[0]) == true) return msg.reply('Enter your ID number after !save')
+    else if(args[0].length !== 9) return msg.reply('Your ID must have 9 digits')
+    if(args[1] !== "Japan" && args[1] !== "Global") return msg.reply('Specify Japan or Global after your ID')
+
+    var data = args.slice(2).toString();
+    data = data.replace(/,/g, " ");
+    data = data.replace(/  /g, ", ");
+    var datalist = data.split("http");
+    
+    if(datalist.length == 1) {
+      var addinfo = datalist[0];
+      var addlink = ''
+    }
+    else {
+      var addinfo = datalist[0];
+      var addlink = 'http'+datalist[1];
+    }
+
+    if(addinfo == '') addinfo = 'N/A'
+    
+    var content = {};
+    content.id = args[0];
+    content.server = args[1];
+    content.info = addinfo;
+    content.link = addlink;
+    id_list[msg.author.username] = content
+    
+    msg.channel.send(
+      msg.author.username+" has saved his "+args[1]+" ID: "+args[0]
+    )
   
   
 });
