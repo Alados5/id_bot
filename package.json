@@ -3,10 +3,12 @@
     "version": "1.0.0",
     "description": "Registers and shows IDs",
     "main": "idbot.js",
+    "scripts": {
+        "start": "node idbot.js"
+    },
     "author": "Alados5",
     "license": "ISC",
     "dependencies": {
         "discord.js": "11.1.0"
-        
     }
 }
