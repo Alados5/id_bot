@@ -34,7 +34,7 @@ client.on('message', msg => {
       },
       title: "Bot HELP Service",
       description: "I'm only online when Alados5 wants. "+
-      "Now I'm trying to run 24/7! If you see me offline, ask why! \n You can call me with these commands:",
+      "Now I'm trying to run 24/7! \n If you see me offline, ask why! \n You can call me with these commands:",
       footer: {
         text: "I'm a bot created by Alados5",
         icon_url: client.user.avatarURL
@@ -107,7 +107,7 @@ client.on('message', msg => {
       },
       title: "ID Database Bot",
       description: "I'm only online when Alados5 wants. "+
-      "Now I'm trying to run 24/7! If you see me offline, ask why! \n The info you requested:",   
+      "Now I'm trying to run 24/7! \n If you see me offline, ask why! \n The info you requested:",   
       footer: {
         text: "I'm a bot created by Alados5",
         icon_url: client.user.avatarURL
