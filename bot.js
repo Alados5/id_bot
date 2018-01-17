@@ -34,7 +34,7 @@ client.on('message', msg => {
       },
       title: "Bot HELP Service",
       description: "I'm only online when Alados5 wants. "+
-      "Now I'm trying to run 24/7! If you see me online, ask why! \n You can call me with these commands:",
+      "Now I'm trying to run 24/7! If you see me offline, ask why! \n You can call me with these commands:",
       footer: {
         text: "I'm a bot created by Alados5",
         icon_url: client.user.avatarURL
@@ -91,6 +91,50 @@ client.on('message', msg => {
     
     msg.channel.send(msg.author.username+" has saved his "+args[1]+" ID: "+args[0])
     //msg.channel.send("It works for now")
+  }
+  
+  if(command == 'show') {
+    const wanteduser = msg.mentions.members.first().user.username;
+    if (!wanteduser) return msg.reply('Mention a user')
+    const allinfo = id_list[wanteduser];
+    if (allinfo == undefined) return msg.reply('This user is not registered')
+
+    msg.channel.send({embed: {
+      color: 16757760,
+      author: {
+        name: client.user.username,
+        icon_url: client.user.avatarURL
+      },
+      title: "ID Database Bot",
+      description: "I'm only online when Alados5 wants. "+
+      "Now I'm trying to run 24/7! If you see me offline, ask why! \n The info you requested:",   
+      footer: {
+        text: "I'm a bot created by Alados5",
+        icon_url: client.user.avatarURL
+      },
+      image: {
+        url: allinfo.link
+      },
+      fields: [
+        {
+          name: "User Name (in Discord)",
+          value: wanteduser
+        },
+        {
+          name: "Server",
+          value: allinfo.server
+        },
+        {
+          name: "ID",
+          value: allinfo.id
+        },
+        {
+          name: "Additional Info",
+          value: allinfo.info
+        }
+      ]
+    }})
+
   }
   
 });
