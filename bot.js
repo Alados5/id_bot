@@ -66,32 +66,31 @@ client.on('message', msg => {
     else if(args[0].length !== 9) return msg.reply('Your ID must have 9 digits')
     if(args[1] !== "Japan" && args[1] !== "Global") return msg.reply('Specify Japan or Global after your ID')
 
-    var data = args.slice(2).toString();
-    data = data.replace(/,/g, " ");
-    data = data.replace(/  /g, ", ");
-    var datalist = data.split("http");
+    //var data = args.slice(2).toString();
+    //data = data.replace(/,/g, " ");
+    //data = data.replace(/  /g, ", ");
+    //var datalist = data.split("http");
     
-    if(datalist.length == 1) {
-      var addinfo = datalist[0];
-      var addlink = ''
-    }
-    else {
-      var addinfo = datalist[0];
-      var addlink = 'http'+datalist[1];
-    }
+    //if(datalist.length == 1) {
+    //  var addinfo = datalist[0];
+    //  var addlink = ''
+    //}
+    //else {
+    //  var addinfo = datalist[0];
+    //  var addlink = 'http'+datalist[1];
+    //}
 
-    if(addinfo == '') addinfo = 'N/A'
+    //if(addinfo == '') addinfo = 'N/A'
     
-    var content = {};
-    content.id = args[0];
-    content.server = args[1];
-    content.info = addinfo;
-    content.link = addlink;
-    id_list[msg.author.username] = content
+    //var content = {};
+    //content.id = args[0];
+    //content.server = args[1];
+    //content.info = addinfo;
+    //content.link = addlink;
+    //id_list[msg.author.username] = content
     
-    msg.channel.send(
-      msg.author.username+" has saved his "+args[1]+" ID: "+args[0]
-    )
+    //msg.channel.send(msg.author.username+" has saved his "+args[1]+" ID: "+args[0])
+    msg.channel.send("It works for now")
   
   
 });
