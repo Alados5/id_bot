@@ -1,0 +1,9 @@
+{
+    "name": "id_bot",
+    "version": "1.0.0",
+    "description": "Registers and shows IDs",
+    "main": "idbot.js",
+    "author": "Alados5",
+    "license": "ISC",
+    "dependencies": {}
+}
