@@ -7,7 +7,7 @@ const ownerID = "284104569586450434";
 
 client.on('ready', () => {
   console.log('Ready');
-  client.user.setActivity('!help | ${client.guilds.size} servers')
+  client.user.setActivity("!help")
 });
 
 client.on('message', msg => {
