@@ -8,8 +8,5 @@
   },
   "author": "Alados5",
   "license": "ISC",
-  "dependencies": {
-    "discord.js": "11.1.0",
-    "request": "2.81.0"
-  }
+  "dependencies": {}
 }
