@@ -169,15 +169,6 @@ bot.on('message', msg => {
 
   }
 
-  //Bans a user only if you are an admin
-  if (command == 'ban') {
-    if(!msg.member.permissions.has('ADMINISTRATOR')) return msg.reply('Nice try')
-    const member = msg.mentions.members.first();
-    if (!member) return msg.reply('Specify which user to ban');
-    //member.ban();
-    msg.channel.send('This action has been turned off')
-  }
-
 });
 
 //bot.login(cfg.token);
