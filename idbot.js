@@ -180,4 +180,5 @@ bot.on('message', msg => {
 
 });
 
-bot.login(cfg.token);
+//bot.login(cfg.token);
+bot.login(process.env.BOT_TOKEN);
