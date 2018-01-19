@@ -33,7 +33,7 @@ client.on('message', msg => {
   
   if(msg.author.id == fappingtonID) {
     if (msg.content == '!QuienSoy') {
-      msg.reply('un grande, el que ha ido probando el bot a cada hora para probar que se guardara. Gracias!)
+      msg.reply('un grande, el que ha ido probando el bot a cada hora para probar que se guardara. Gracias!')
     }
   }
                                               
