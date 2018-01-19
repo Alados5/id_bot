@@ -24,7 +24,7 @@ client.on('message', msg => {
   
   if(msg.author.id == charlieID) {
     if (msg.content == '!QuienSoy') {
-      msg.reply('un grande, el que ha soportado mil menciones por minuto para que esto funcione, mil gracias! :D')
+      msg.reply("un grande, el que ha soportado mil menciones por minuto para que esto funcione, mil gracias! :D")
     }
     if (msg.content == '!Hey') {
       msg.reply('¡Hey Charlie! ¿Quieres comprobar si aún tengo tu ID? ¡Gracias por todo!')
