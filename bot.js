@@ -4,10 +4,13 @@ const client = new Discord.Client();
 var id_list = {};
 const prefix = '!';
 const ownerID = "284104569586450434";
+const charlieID = "389070076235481090";
+const fappingtonID = "391601707022549007";
+const joseluID = "210835574641262602";
 
 client.on('ready', () => {
-  console.log('Ready');
   //client.user.setActivity(`${cfg.prefix}help | ${bot.guilds.size} servers`)
+  client.user.setGame("!help, !ayuda");
 });
 
 client.on('message', msg => {
@@ -19,6 +22,20 @@ client.on('message', msg => {
     msg.reply('What is thy bidding, my Master?')
   }
   
+  if(msg.author.id == charlieID) {
+    if (msg.content == '!QuienSoy') msg.reply('un grande, el que ha soportado mil menciones por minuto para que esto funcione, mil gracias! :D')
+    if (msg.content == '!Hey') msg.reply('¡Hey Charlie! ¿Quieres comprobar si aún tengo tu ID? ¡Gracias por todo!')
+  }
+  
+  if(msg.author.id == fappingtonID) {
+    if (msg.content == '!QuienSoy') msg.reply('un grande, el que ha ido probando el bot a cada hora para probar que se guardara. Gracias!)
+  }
+                                              
+  if(msg.author.id == joseluID) {
+    if (msg.content == '!QuienSoy') msg.reply('el mejor youtuber de OPTC en español. Y un puto whale rager ;)')
+    if (msg.content == '!Hey') msg.reply('Hey! Tienes a Lucy... Y A CROCO. No necesitas saber más')
+  }
+    
   //Handles arguments to just take the first word
   const args = msg.content.slice('!'.length).split(/ +/);
   const command = args.shift().toLowerCase();  
@@ -102,15 +119,10 @@ client.on('message', msg => {
 
     msg.channel.send({embed: {
       color: 16757760,
-      author: {
-        name: client.user.username,
-        icon_url: client.user.avatarURL
-      },
       title: "ID Database Bot",
-      description: "I'm only online when Alados5 wants. "+
-      "Now I'm trying to run 24/7! \n If you see me offline, ask why! \n The info you requested:",   
+      description: "The info you requested: \n -",   
       footer: {
-        text: "I'm a bot created by Alados5",
+        text: "I'm a bot created by Alados5 | I should be online 24/7",
         icon_url: client.user.avatarURL
       },
       image: {
