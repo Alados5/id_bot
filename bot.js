@@ -52,7 +52,7 @@ client.on('message', msg => {
   
   if(command == 'help') {
     //message.reply('text');
-    msg.channel.send('Commands: !save, !show');
+    msg.channel.send('Commands (EN): !save, !show');
     msg.channel.send({embed: {
       color: 16757760,
       author: {
@@ -60,8 +60,9 @@ client.on('message', msg => {
         icon_url: client.user.avatarURL
       },
       title: "Bot HELP Service",
-      description: "I'm only online when Alados5 wants. "+
-      "Now I'm trying to run 24/7! \n If you see me offline, ask why! \n You can call me with these commands:",
+      description: "I'm a bot that registers and shows OPTC IDs. \n"+
+      "I should run 24/7 and have an updated register! \n"+
+      "If you see me offline, ask why! \n \n You can call me with these commands:",
       footer: {
         text: "I'm a bot created by Alados5",
         icon_url: client.user.avatarURL
@@ -87,6 +88,48 @@ client.on('message', msg => {
       ]
     }})
   }
+  
+    
+  if(command == 'ayuda') {
+    //message.reply('text');
+    msg.channel.send('Comandos (ES): !guarda, !muestra');
+    msg.channel.send({embed: {
+      color: 16757760,
+      author: {
+        name: client.user.username,
+        icon_url: client.user.avatarURL
+      },
+      title: "Servicio de AYUDA del Bot",
+      description: "Soy un bot que registra y muestra las IDs de OPTC. \n"+
+      "Debería estar activo 24/7 y tener el registro actualizado! \n"+
+      "Si me ves offline, pregunta qué pasa! \n \n Me puedes llamar con estos comandos:",
+      footer: {
+        text: "Soy un bot creado por Alados5",
+        icon_url: client.user.avatarURL
+      },
+      fields: [
+        {
+          name: "!guarda",
+          value: "Guarda una ID con una descripción. "+
+          "Llamar con: ```\n !guarda [ID] [Versión] [Info] [Link] \n``` "+
+          "ID debe ser un número de 9 dígitos sin espacios."+
+          "\n Versión debe ser 'Global' o 'Japan'."+
+          "\n Se debe separar con espacios sencillos."+
+          "\n \n OPCIONAL: Añade cualquier info que quieras escribiendo algo después de eso, y luego puedes poner un link a una foto de tu box."+
+          "\n **IMPORTANTE!** Todos los links deben empezar con 'http'. No vale copiar foto!!. \n \n Ejemplo: "+
+          "\n *!guarda 123456789 Japan Lucy, Neko https://imgur.com/r/OnePieceTC/t3cRD* \n \n -"
+        },
+        {
+          name: "!muestra",
+          value: "Muestra la ID de un usuario del chat si ha guardado sus datos. "+
+          "Llamar con: ```\n !show @USER \n``` "+
+          "Tienes que MENCIONAR a alguien (puedes ser tú mismo!)."+
+          "\n Si el usuario ha registrado su info, aparecerá."
+        }
+      ]
+    }})
+  }
+
 
   if(command == 'save') {
     if(isNaN(args[0]) == true) return msg.reply('Enter your ID number after !save')
