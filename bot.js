@@ -3,10 +3,14 @@ const client = new Discord.Client();
 
 var id_list = {};
 const prefix = '!';
+
 const ownerID = "284104569586450434";
 const charlieID = "389070076235481090";
 const fappingtonID = "391601707022549007";
 const joseluID = "210835574641262602";
+
+const JPdic = ['Japan', 'Japon', 'JP', 'Japonesa', 'japan', 'japon', 'jp'];
+const GLdic = ['Global', 'GB', 'global', 'gb'];
 
 client.on('ready', () => {
   //client.user.setActivity(`${cfg.prefix}help | ${bot.guilds.size} servers`)
@@ -16,6 +20,9 @@ client.on('ready', () => {
 client.on('message', msg => {
   //Checks if author is a bot or message doesn't start with prefix
   if(msg.author.bot || !msg.content.startsWith(prefix)) return;
+
+
+//------------------------------------------------------------------------- START USER COMMANDS  
   
   //Checks if the author is me
   if(msg.author.id == ownerID && msg.content == '!MyBot') {
@@ -35,6 +42,9 @@ client.on('message', msg => {
     if (msg.content == '!QuienSoy') {
       msg.reply('un grande, el que ha ido probando el bot a cada hora para probar que se guardara. Gracias!')
     }
+    if (msg.content == '!Hey') {
+      msg.reply('¡Hey Fappington! ¿Me has probado en los últimos 60 minutos? ¿He dejado de funcionar? ¡Gracias por ayudar!')
+    }
   }
                                               
   if(msg.author.id == joseluID) {
@@ -42,13 +52,17 @@ client.on('message', msg => {
       msg.reply('el mejor youtuber de OPTC en español. Y un puto whale rager ;)')
     }
     if (msg.content == '!Hey') {
-      msg.reply('Hey! Tienes a Lucy... Y A CROCO. No necesitas saber más')
+      msg.reply('¡Muy buenas, JoseLu! ¿Qué tal andamos? Tienes a Lucy... Y A CROCO. No necesitas saber más')
     }
   }
     
   //Handles arguments to just take the first word
   const args = msg.content.slice('!'.length).split(/ +/);
   const command = args.shift().toLowerCase();  
+  
+//------------------------------------------------------------------------- END USER COMMANDS  
+  
+//------------------------------------------------------------------------- START HELP
   
   if(command == 'help') {
     //message.reply('text');
@@ -129,12 +143,25 @@ client.on('message', msg => {
       ]
     }})
   }
-
-
+  
+//------------------------------------------------------------------------- END HELP
+  
+//------------------------------------------------------------------------- START SAVE
+  
+  
   if(command == 'save') {
     if(isNaN(args[0]) == true) return msg.reply('Enter your ID number after !save')
     else if(args[0].length !== 9) return msg.reply('Your ID must have 9 digits')
-    if(args[1] !== "Japan" && args[1] !== "Global") return msg.reply('Specify Japan or Global after your ID')
+    if (JPdic.indexOf(args[1]) >= 0) {
+      args[1] = "Japan";
+    }
+    if (GLdic.indexOf(args[1]) >= 0) {
+      args[1] = "Global";
+    }
+    else {
+      return msg.reply('Specify Japan or Global after your ID')
+    }
+    //if(args[1] !== "Japan" && args[1] !== "Global") return msg.reply('Specify Japan or Global after your ID')
 
     var data = args.slice(2).toString();
     data = data.replace(/,/g, " ");
@@ -162,6 +189,11 @@ client.on('message', msg => {
     msg.channel.send(msg.author.username+" has saved his "+args[1]+" ID: "+args[0])
     //msg.channel.send("It works for now")
   }
+
+  
+//------------------------------------------------------------------------- END SAVE
+  
+//------------------------------------------------------------------------- START SHOW
   
   if(command == 'show') {
     if (msg.mentions.members.first() == undefined) return msg.reply('Mention a user')
