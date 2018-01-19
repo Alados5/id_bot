@@ -23,17 +23,27 @@ client.on('message', msg => {
   }
   
   if(msg.author.id == charlieID) {
-    if (msg.content == '!QuienSoy') msg.reply('un grande, el que ha soportado mil menciones por minuto para que esto funcione, mil gracias! :D')
-    if (msg.content == '!Hey') msg.reply('¡Hey Charlie! ¿Quieres comprobar si aún tengo tu ID? ¡Gracias por todo!')
+    if (msg.content == '!QuienSoy') {
+      msg.reply('un grande, el que ha soportado mil menciones por minuto para que esto funcione, mil gracias! :D')
+    }
+    if (msg.content == '!Hey') {
+      msg.reply('¡Hey Charlie! ¿Quieres comprobar si aún tengo tu ID? ¡Gracias por todo!')
+    }
   }
   
   if(msg.author.id == fappingtonID) {
-    if (msg.content == '!QuienSoy') msg.reply('un grande, el que ha ido probando el bot a cada hora para probar que se guardara. Gracias!)
+    if (msg.content == '!QuienSoy') {
+      msg.reply('un grande, el que ha ido probando el bot a cada hora para probar que se guardara. Gracias!)
+    }
   }
                                               
   if(msg.author.id == joseluID) {
-    if (msg.content == '!QuienSoy') msg.reply('el mejor youtuber de OPTC en español. Y un puto whale rager ;)')
-    if (msg.content == '!Hey') msg.reply('Hey! Tienes a Lucy... Y A CROCO. No necesitas saber más')
+    if (msg.content == '!QuienSoy') {
+      msg.reply('el mejor youtuber de OPTC en español. Y un puto whale rager ;)')
+    }
+    if (msg.content == '!Hey') {
+      msg.reply('Hey! Tienes a Lucy... Y A CROCO. No necesitas saber más')
+    }
   }
     
   //Handles arguments to just take the first word
