@@ -153,14 +153,13 @@ client.on('message', msg => {
     if(isNaN(args[0]) == true) return msg.reply('Enter your ID number after !save')
     else if(args[0].length !== 9) return msg.reply('Your ID must have 9 digits')
     
-    msg.channel.send(JPdic.indexOf(args[1]));
-    msg.channel.send(GLdic.indexOf(args[1]));
-    if (JPdic.indexOf(args[1]) >= 0) {
-      args[1] = "Japan";
-    }
-    if (GLdic.indexOf(args[1]) >= 0) {
-      args[1] = "Global";
-    }
+    var isJP = JPdic.indexOf(args[1]) >= 0;
+    var isGL = GLdic.indexOf(args[1]) >= 0;
+    if (isJP) args[1] = "Japan";
+    else if (isGL) args[1] = "Global";
+    
+    msg.channel.send(args[1]);
+    
     else {
       return msg.reply('Specify Japan or Global after your ID')
     }
