@@ -241,7 +241,7 @@ client.on('message', msg => {
 //------------------------------------------------------------------------- START SHOW
   
   if(command == 'show') {
-    if (msg.mentions.members.first() == undefined) return msg.reply('Mention a user')
+    if (msg.mentions.members.first() == undefined) return msg.reply("Mention a user (with @)")
     const wanteduser = msg.mentions.members.first().user.username;
     if (!wanteduser) return msg.reply('Mention a user')
     const allinfo = id_list[wanteduser];
