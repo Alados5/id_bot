@@ -9,7 +9,7 @@ const charlieID = "389070076235481090";
 const fappingtonID = "391601707022549007";
 const joseluID = "210835574641262602";
 
-const JPdic = ['Japan', 'Japon', 'JP', 'Japonesa', 'japan', 'japon', 'jp', 'japonesa'];
+const JPdic = ['Japan', 'Japon', 'JP', 'Japonesa', 'Japo', 'japan', 'japon', 'jp', 'japonesa', 'japo'];
 const GLdic = ['Global', 'GB', 'global', 'gb'];
 
 client.on('ready', () => {
@@ -136,7 +136,7 @@ client.on('message', msg => {
         {
           name: "!muestra",
           value: "Muestra la ID de un usuario del chat si ha guardado sus datos. "+
-          "Llamar con: ```\n !show @USER \n``` "+
+          "Llamar con: ```\n !muestra @USER \n``` "+
           "Tienes que MENCIONAR a alguien (puedes ser tú mismo!)."+
           "\n Si el usuario ha registrado su info, aparecerá."
         }
@@ -230,7 +230,7 @@ client.on('message', msg => {
     content.link = addlink;
     id_list[msg.author.username] = content
     
-    msg.channel.send(msg.author.username+" ha guardado su ID: "+args[0]+" Del servidor: "+args[1])
+    msg.channel.send(msg.author.username+" ha guardado su ID ("+args[0]+") del servidor: "+args[1])
     //msg.channel.send("It works for now")
   }  
   
@@ -249,7 +249,7 @@ client.on('message', msg => {
     msg.channel.send({embed: {
       color: 16757760,
       title: "ID Database Bot",
-      description: "The info you requested: \n -",   
+      description: "The info you requested: \n ",   
       footer: {
         text: "I'm a bot created by Alados5 | I should be online 24/7",
         icon_url: client.user.avatarURL
