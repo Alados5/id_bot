@@ -44,10 +44,35 @@ client.on('message', msg => {
       }
       msg.channel.send(database)
     }
+    
 //------------------------------------------------------------------------- END ALLDATA    
     
+//------------------------------------------------------------------------- START PRELOAD  
+    
+    var ispreload = (msg.content.slice(0, 8) == "!Preload");
+    if (ispreload) {
+      msg.reply("Preloading");  
+      
+      var bulkdata = msg.content.slice(9);
+      var lines = bulkdata.split(';;');
+      
+      for(j=0; j<lines.length; j++) {
+        var parts = lines[j].split(' ; ');
+            
+        var useri = parts[0]
+        useri = useri.replace('\n', '');
+        if (useri.slice(0,1) == ' ') {
+          useri = useri.slice(1);
+        }    
+            
+        id_list[useri] = {'id':parts[1], 'server':parts[2], 'info':parts[3], 'link':parts[4]};
+      }       
+      msg.channel.send("Update complete!");      
+    }      
+    
+//------------------------------------------------------------------------- END PRELOAD  
+    
   }
-  
 
 //------------------------------------------------------------------------- END ADMIN COMMANDS
   
