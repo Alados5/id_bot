@@ -79,13 +79,14 @@ client.on('message', msg => {
 //------------------------------------------------------------------------- START DELETEUSER    
 
     if(command == 'deleteuser') {    
-      var deluser = msg.content.slice(11);
+      var deluser = args[0];
       if (deluser == '') return msg.reply("No user mentioned")
+      msg.channel.send('User: "'+deluser+'"')
       
-      delete id_list[deluser]['id'];
-      delete id_list[deluser]['server'];
-      delete id_list[deluser]['info'];
-      delete id_list[deluser]['link'];
+      delete id_list.deluser.id;
+      delete id_list.deluser.server;
+      delete id_list.deluser.info;
+      delete id_list.deluser.link;
 
       msg.channel.send('Deleted info of'+deluser)
 
