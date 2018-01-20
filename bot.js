@@ -83,8 +83,10 @@ client.on('message', msg => {
       if (deluser == '') return msg.reply("Specify a user")
       
       id_list[deluser] = {};
+      id_list[deluser] = '';
+      delete id_list[deluser];
 
-      msg.channel.send('Deleted info of'+deluser)
+      msg.channel.send('Deleted info of '+deluser)
 
     }
     
