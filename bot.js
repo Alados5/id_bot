@@ -324,15 +324,16 @@ client.on('message', msg => {
     for (var key in id_list) {
       if (id_list.hasOwnProperty(key)) {
         database += key + ' ; ';
-        database += id_list[key]['ID'] + ' ; ';
-        database += id_list[key]['Server'] + ' ; ';
-        database += id_list[key]['Info'] + ' ; ';
-        database += id_list[key]['Link'] + ';; \n';
+        database += id_list[key]['id'] + ' ; ';
+        database += id_list[key]['server'] + ' ; ';
+        database += id_list[key]['info'] + ' ; ';
+        database += id_list[key]['link'] + ';; \n';
       }
     }
     msg.channel.send(database);
   }
   
+//------------------------------------------------------------------------- END ALLDATA
   
 });
 
