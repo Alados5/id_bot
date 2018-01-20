@@ -14,7 +14,7 @@ const GLdic = ['Global', 'GB', 'global', 'gb'];
 
 client.on('ready', () => {
   //client.user.setActivity(`${cfg.prefix}help | ${bot.guilds.size} servers`)
-  client.user.setActivity("Online")
+  client.user.setGame("Online")
 });
 
 client.on('message', msg => {
@@ -241,7 +241,7 @@ client.on('message', msg => {
 //------------------------------------------------------------------------- START SHOW
   
   if(command == 'show') {
-    if (msg.mentions.members.first() == undefined) return msg.reply('Mention a user (with @)')
+    if (msg.mentions.members.first() == undefined) return msg.reply('Mention a user')
     const wanteduser = msg.mentions.members.first().user.username;
     if (!wanteduser) return msg.reply('Mention a user')
     const allinfo = id_list[wanteduser];
@@ -250,6 +250,7 @@ client.on('message', msg => {
     msg.channel.send({embed: {
       color: 16757760,
       title: "Your request",
+      description: "This one",
       footer: {
         text: "I'm a bot created by Alados5  |  I should be online 24/7",
         icon_url: client.user.avatarURL
