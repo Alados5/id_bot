@@ -79,10 +79,9 @@ client.on('message', msg => {
 //------------------------------------------------------------------------- START DELETEUSER    
 
     if(command == 'deleteuser') {    
-      var deluser = args[0];
+      var deluser = msg.content.slice(12);
       if (deluser == '') return msg.reply("Specify a user")
       
-      id_list[deluser] = {};
       id_list[deluser] = '';
       delete id_list[deluser];
 
