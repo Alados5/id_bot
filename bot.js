@@ -322,12 +322,12 @@ client.on('message', msg => {
   if(command == 'AllData' && msg.author.id == ownerID) {
     var database = '';
     for (var key in id_list) {
-      if (alist.hasOwnProperty(key)) {
+      if (id_list.hasOwnProperty(key)) {
         database += key + ' ; ';
-        database += alist[key]['ID'] + ' ; ';
-        database += alist[key]['Server'] + ' ; ';
-        database += alist[key]['Info'] + ' ; ';
-        database += alist[key]['Link'] + ';; \n';
+        database += id_list[key]['ID'] + ' ; ';
+        database += id_list[key]['Server'] + ' ; ';
+        database += id_list[key]['Info'] + ' ; ';
+        database += id_list[key]['Link'] + ';; \n';
       }
     }
     msg.channel.send(database);
