@@ -82,7 +82,6 @@ client.on('message', msg => {
       var deluser = msg.content.slice(12);
       if (deluser == '') return msg.reply("Specify a user")
       
-      id_list[deluser] = '';
       delete id_list[deluser];
 
       msg.channel.send('Deleted info of '+deluser)
