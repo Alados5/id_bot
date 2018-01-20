@@ -278,62 +278,6 @@ client.on('message', msg => {
 
   }
   
-  
-  if(command == 'muestra') {
-    if (msg.mentions.members.first() == undefined) return msg.reply('Menciona a un usuario (con @)')
-    const wanteduser = msg.mentions.members.first().user.username;
-    if (!wanteduser) return msg.reply('Menciona a un usuario')
-    const allinfo = id_list[wanteduser];
-    if (allinfo == undefined) return msg.reply('Este usuario no está registrado')
-
-    msg.channel.send({embed: {
-      color: 16757760,
-      footer: {
-        text: "Soy un bot creado por Alados5  |  Debería funcionar 24/7",
-        icon_url: client.user.avatarURL
-      },
-      image: {
-        url: allinfo.link
-      },
-      fields: [
-        {
-          name: "Nombre (en Discord)",
-          value: wanteduser
-        },
-        {
-          name: "Servidor",
-          value: allinfo.server
-        },
-        {
-          name: "ID",
-          value: allinfo.id
-        },
-        {
-          name: "Info adicional",
-          value: allinfo.info
-        }
-      ]
-    }})
-
-  }
-  
-  
-//------------------------------------------------------------------------- END SHOW
-  
-//------------------------------------------------------------------------- START ALLDATA  
-  
-
-  
-  
-//------------------------------------------------------------------------- END ALLDATA
-  
-//------------------------------------------------------------------------- START PRELOAD    
-  
-
-  
-  
-//------------------------------------------------------------------------- END PRELOAD
-  
 });
 
 
