@@ -155,8 +155,12 @@ client.on('message', msg => {
     
     var isJP = JPdic.indexOf(args[1]) >= 0;
     var isGL = GLdic.indexOf(args[1]) >= 0;
-    if (isJP) args[1] = "Japan";
-    else if (isGL) args[1] = "Global";
+    if (isJP) {
+      args[1] = "Japan";
+    }
+    if (isGL) {
+      args[1] = "Global";
+    }
     
     msg.channel.send(args[1]);
     
