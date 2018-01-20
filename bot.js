@@ -35,22 +35,23 @@ client.on('message', msg => {
       var database = '';
       for (var key in id_list) {
         if (id_list.hasOwnProperty(key)) {
-          database += key;
-          msg.channel.send(database)
+          database += key + ' ; ';
+          database += id_list[key]['id'] + ' ; ';
+          database += id_list[key]['server'] + ' ; ';
+          database += id_list[key]['info'] + ' ; ';
+          database += id_list[key]['link'] + ';; \n';          
         }
-      }  
+      }
+      msg.channel.send(database)
     }
+//------------------------------------------------------------------------- END ALLDATA    
+    
   }
-
-//        database += key + ' ; ';
-//        database += id_list[key]['id'] + ' ; ';
-//        database += id_list[key]['server'] + ' ; ';
-//        database += id_list[key]['info'] + ' ; ';
-//        database += id_list[key]['link'] + ';; \n';
-
-//    msg.channel.send(database);
   
-//------------------------------------------------------------------------- END ALLDATA
+
+//------------------------------------------------------------------------- END ADMIN COMMANDS
+  
+//------------------------------------------------------------------------- START USER COMMANDS  
   
   if(msg.author.id == charlieID) {
     if (msg.content == '!QuienSoy') {
