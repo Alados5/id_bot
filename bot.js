@@ -23,6 +23,11 @@ client.on('message', msg => {
 
 
 //------------------------------------------------------------------------- START ADMIN COMMANDS  
+
+  //Handles arguments to just take the first word
+  const args = msg.content.slice('!'.length).split(/ +/);
+  const command = args.shift().toLowerCase(); 
+  
   
   //Checks if the author is me
   if(msg.author.id == ownerID) {
@@ -49,8 +54,7 @@ client.on('message', msg => {
     
 //------------------------------------------------------------------------- START PRELOAD  
     
-    var ispreload = (msg.content.slice(0, 8) == "!Preload");
-    if (ispreload) {
+    if (command == 'preload') {
       msg.reply("Preloading");  
       
       var bulkdata = msg.content.slice(9);
@@ -71,6 +75,20 @@ client.on('message', msg => {
     }      
     
 //------------------------------------------------------------------------- END PRELOAD  
+    
+//------------------------------------------------------------------------- START DELETEUSER    
+
+    if(command == 'deleteuser') {    
+      var deluser = msg.content.slice(11);
+      if (deluser == '') return msg.reply("No user mentioned")
+      
+      delete id_list.deluser;
+
+      msg.channel.send('Deleted info of'+deluser)
+
+    }
+    
+//------------------------------------------------------------------------- END DELETEUSER  
     
   }
 
@@ -105,9 +123,6 @@ client.on('message', msg => {
     }
   }
     
-  //Handles arguments to just take the first word
-  const args = msg.content.slice('!'.length).split(/ +/);
-  const command = args.shift().toLowerCase();  
   
 //------------------------------------------------------------------------- END USER COMMANDS  
   
