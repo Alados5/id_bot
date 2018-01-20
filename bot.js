@@ -313,6 +313,26 @@ client.on('message', msg => {
       ]
     }})
   }  
+
+  
+//------------------------------------------------------------------------- END SHOW
+  
+//------------------------------------------------------------------------- START ALLDATA
+  
+  if(command == 'AllData' && msg.author.id == ownerID) {
+    var database = '';
+    for (var key in id_list) {
+      if (alist.hasOwnProperty(key)) {
+        database += key + ' ; ';
+        database += alist[key]['ID'] + ' ; ';
+        database += alist[key]['Server'] + ' ; ';
+        database += alist[key]['Info'] + ' ; ';
+        database += alist[key]['Link'] + ';; \n';
+      }
+    }
+    msg.channel.send(database);
+  }
+  
   
 });
 
