@@ -159,9 +159,6 @@ client.on('message', msg => {
     if (GLdic.indexOf(args[1]) >= 0) {
       args[1] = "Global";
     }
-    
-    msg.channel.send(args[1])
-    
     else {
       return msg.reply('Specify Japan or Global after your ID')
     }
