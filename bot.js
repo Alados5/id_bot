@@ -9,12 +9,12 @@ const charlieID = "389070076235481090";
 const fappingtonID = "391601707022549007";
 const joseluID = "210835574641262602";
 
-const JPdic = ['Japan', 'Japon', 'JP', 'Japonesa', 'japan', 'japon', 'jp'];
+const JPdic = ['Japan', 'Japon', 'JP', 'Japonesa', 'japan', 'japon', 'jp', 'japonesa'];
 const GLdic = ['Global', 'GB', 'global', 'gb'];
 
 client.on('ready', () => {
   //client.user.setActivity(`${cfg.prefix}help | ${bot.guilds.size} servers`)
-  client.user.setGame("!help, !ayuda");
+  client.user.setGame("Online")
 });
 
 client.on('message', msg => {
@@ -151,7 +151,7 @@ client.on('message', msg => {
   
   if(command == 'save') {
     if(isNaN(args[0]) == true) return msg.reply('Enter your ID number after !save')
-    else if(args[0].length !== 9) return msg.reply('Your ID must have 9 digits')
+    else if(args[0].length !== 9) return msg.reply('Your ID must have 9 digits, no spaces nor commas')
     
     if (JPdic.indexOf(args[1]) >= 0) {
       args[1] = "Japan";
@@ -191,6 +191,49 @@ client.on('message', msg => {
     //msg.channel.send("It works for now")
   }
 
+  
+  if(command == 'guarda') {
+    if(isNaN(args[0]) == true) return msg.reply('Pon tu ID después de !guarda. 9 números seguidos')
+    else if(args[0].length !== 9) return msg.reply('Tu ID debe tener 9 dígitos, sin espacios ni comas')
+    
+    if (JPdic.indexOf(args[1]) >= 0) {
+      args[1] = "Japan";
+    }
+    else if (GLdic.indexOf(args[1]) >= 0) {
+      args[1] = "Global";
+    }
+    else {
+      return msg.reply('Especifica Japan o Global después de tu ID')
+    }
+    //if(args[1] !== "Japan" && args[1] !== "Global") return msg.reply('Specify Japan or Global after your ID')
+
+    var data = args.slice(2).toString();
+    data = data.replace(/,/g, " ");
+    data = data.replace(/  /g, ", ");
+    var datalist = data.split("http");
+    
+    if(datalist.length == 1) {
+      var addinfo = datalist[0];
+      var addlink = ''
+    }
+    else {
+      var addinfo = datalist[0];
+      var addlink = 'http'+datalist[1];
+    }
+
+    if(addinfo == '') addinfo = 'N/A'
+    
+    var content = {};
+    content.id = args[0];
+    content.server = args[1];
+    content.info = addinfo;
+    content.link = addlink;
+    id_list[msg.author.username] = content
+    
+    msg.channel.send(msg.author.username+" ha guardado su ID: "+args[0]+" Del servidor: "+args[1])
+    //msg.channel.send("It works for now")
+  }  
+  
   
 //------------------------------------------------------------------------- END SAVE
   
