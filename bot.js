@@ -12,10 +12,10 @@ const joseluID = "210835574641262602";
 const JPdic = ['Japan', 'Japon', 'JP', 'Japonesa', 'Japo', 'japan', 'japon', 'jp', 'japonesa', 'japo'];
 const GLdic = ['Global', 'GB', 'global', 'gb'];
 
-client.on('ready', () => {
+//client.on('ready', () => {
   //client.user.setActivity(`${cfg.prefix}help | ${bot.guilds.size} servers`)
-  client.user.setGame("Online")
-});
+  //client.user.setGame("Online")
+//});
 
 client.on('message', msg => {
   //Checks if author is a bot or message doesn't start with prefix
