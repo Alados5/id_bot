@@ -156,7 +156,7 @@ client.on('message', msg => {
     if (JPdic.indexOf(args[1]) >= 0) {
       args[1] = "Japan";
     }
-    if (GLdic.indexOf(args[1]) >= 0) {
+    else if (GLdic.indexOf(args[1]) >= 0) {
       args[1] = "Global";
     }
     else {
