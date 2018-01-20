@@ -22,12 +22,35 @@ client.on('message', msg => {
   if(msg.author.bot || !msg.content.startsWith(prefix)) return;
 
 
-//------------------------------------------------------------------------- START USER COMMANDS  
+//------------------------------------------------------------------------- START ADMIN COMMANDS  
   
   //Checks if the author is me
-  if(msg.author.id == ownerID && msg.content == '!MyBot') {
-    msg.reply('What is thy bidding, my Master?')
+  if(msg.author.id == ownerID) {
+    if(msg.content == '!MyBot') {
+      msg.reply('What is thy bidding, my Master?')
+    }
+    
+//------------------------------------------------------------------------- START ALLDATA    
+    if(msg.content == '!AllData') {
+      var database = '';
+      for (var key in id_list) {
+        if (id_list.hasOwnProperty(key)) {
+          database += key;
+          msg.channel.send(database)
+        }
+      }  
+    }
   }
+
+//        database += key + ' ; ';
+//        database += id_list[key]['id'] + ' ; ';
+//        database += id_list[key]['server'] + ' ; ';
+//        database += id_list[key]['info'] + ' ; ';
+//        database += id_list[key]['link'] + ';; \n';
+
+//    msg.channel.send(database);
+  
+//------------------------------------------------------------------------- END ALLDATA
   
   if(msg.author.id == charlieID) {
     if (msg.content == '!QuienSoy') {
@@ -316,24 +339,6 @@ client.on('message', msg => {
 
   
 //------------------------------------------------------------------------- END SHOW
-  
-//------------------------------------------------------------------------- START ALLDATA
-  
-  if(command == 'AllData' && msg.author.id == ownerID) {
-    var database = '';
-    for (var key in id_list) {
-      if (id_list.hasOwnProperty(key)) {
-        database += key + ' ; ';
-        database += id_list[key]['id'] + ' ; ';
-        database += id_list[key]['server'] + ' ; ';
-        database += id_list[key]['info'] + ' ; ';
-        database += id_list[key]['link'] + ';; \n';
-      }
-    }
-    msg.channel.send(database);
-  }
-  
-//------------------------------------------------------------------------- END ALLDATA
   
 });
 
