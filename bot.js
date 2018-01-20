@@ -82,7 +82,12 @@ client.on('message', msg => {
       var deluser = msg.content.slice(11);
       if (deluser == '') return msg.reply("No user mentioned")
       
-      delete id_list[deluser];
+      var userdata = id_list[deluser];
+      
+      delete userdata['id'];
+      delete userdata['server'];
+      delete userdata['info'];
+      delete userdata['link'];
 
       msg.channel.send('Deleted info of'+deluser)
 
