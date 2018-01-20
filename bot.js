@@ -14,7 +14,7 @@ const GLdic = ['Global', 'GB', 'global', 'gb'];
 
 client.on('ready', () => {
   //client.user.setActivity(`${cfg.prefix}help | ${bot.guilds.size} servers`)
-  client.user.setGame("Online")
+  client.user.setActivity("Online")
 });
 
 client.on('message', msg => {
@@ -86,18 +86,19 @@ client.on('message', msg => {
           name: "!save",
           value: "Save an ID with some description. "+
           "Call it with: ```\n !save [ID] [Server] [Info] [Link] \n``` "+
-          "ID must be a 9 digit number and Server must be 'Global' or 'Japan'."+
+          "ID must be a 9 digit number with no spaces."+
+          "\n Server must be 'Global' or 'Japan'. Some other variants like JP or GB are accepted."+
           "\n Separate everything with simple spaces."+
-          "\n \n OPTIONAL: Add any info you want after that, and/or a link to a picture of your box."+
-          "\n **IMPORTANT!** All links must begin with 'http'!!. \n \n Example: "+
-          "\n *!save 123456789 Japan Lucy, Neko https://imgur.com/r/OnePieceTC/t3cRD* \n \n -"
+          "\n \n OPTIONAL: Add any text info you want after that, and/or a link to a picture of your box."+
+          "\n **IMPORTANT!** All links must begin with 'http', copying a picture doesn't count!! \n \n Example: "+
+          "\n *!save 123456789 Japan P-Lv.300, I have Lucy and Neko quadmax. https://imgur.com/r/OnePieceTC/t3cRD* \n \n -"
         },
         {
           name: "!show",
           value: "Show the ID of a user in the chat if he/she has saved it. "+
           "Call it with: ```\n !show @USER \n``` "+
-          "You have to tag someone (it can be yourself!)."+
-          "\n If the user has registered any info, it will appear."
+          "You have to MENTION/TAG someone (it can be yourself!)"+
+          "\n If the user hasn't registered any info, it will also say so."
         }
       ]
     }})
@@ -127,18 +128,18 @@ client.on('message', msg => {
           value: "Guarda una ID con una descripción. "+
           "Llamar con: ```\n !guarda [ID] [Versión] [Info] [Link] \n``` "+
           "ID debe ser un número de 9 dígitos sin espacios."+
-          "\n Versión debe ser 'Global' o 'Japan'."+
-          "\n Se debe separar con espacios sencillos."+
-          "\n \n OPCIONAL: Añade cualquier info que quieras escribiendo algo después de eso, y luego puedes poner un link a una foto de tu box."+
-          "\n **IMPORTANTE!** Todos los links deben empezar con 'http'. No vale copiar foto!!. \n \n Ejemplo: "+
-          "\n *!guarda 123456789 Japan Lucy, Neko https://imgur.com/r/OnePieceTC/t3cRD* \n \n -"
+          "\n Versión debe ser 'Global' o 'Japan'. Valen algunas cosas como JP o GB"+
+          "\n Se debe separar todo con espacios sencillos."+
+          "\n \n OPCIONAL: Añade cualquier info que quieras escribiendo algo después de eso y/o con un link a una foto de tu box."+
+          "\n **IMPORTANTE!** Todos los links deben empezar con 'http'. No vale copiar foto!! \n \n Ejemplo: "+
+          "\n *!guarda 123456789 Japan P-Lv.300, Tengo Lucy y Neko quadmax https://imgur.com/r/OnePieceTC/t3cRD* \n \n -"
         },
         {
           name: "!muestra",
           value: "Muestra la ID de un usuario del chat si ha guardado sus datos. "+
           "Llamar con: ```\n !muestra @USER \n``` "+
           "Tienes que MENCIONAR a alguien (puedes ser tú mismo!)."+
-          "\n Si el usuario ha registrado su info, aparecerá."
+          "\n Si el usuario no ha registrado su info, se avisará."
         }
       ]
     }})
@@ -240,7 +241,7 @@ client.on('message', msg => {
 //------------------------------------------------------------------------- START SHOW
   
   if(command == 'show') {
-    if (msg.mentions.members.first() == undefined) return msg.reply('Mention a user')
+    if (msg.mentions.members.first() == undefined) return msg.reply('Mention a user (with @)')
     const wanteduser = msg.mentions.members.first().user.username;
     if (!wanteduser) return msg.reply('Mention a user')
     const allinfo = id_list[wanteduser];
@@ -248,10 +249,8 @@ client.on('message', msg => {
 
     msg.channel.send({embed: {
       color: 16757760,
-      title: "ID Database Bot",
-      description: "The info you requested: \n ",   
       footer: {
-        text: "I'm a bot created by Alados5 | I should be online 24/7",
+        text: "I'm a bot created by Alados5  |  I should be online 24/7",
         icon_url: client.user.avatarURL
       },
       image: {
@@ -271,7 +270,7 @@ client.on('message', msg => {
           value: allinfo.id
         },
         {
-          name: "Additional Info",
+          name: "Additional info",
           value: allinfo.info
         }
       ]
@@ -279,8 +278,63 @@ client.on('message', msg => {
 
   }
   
-});
+  
+  if(command == 'muestra') {
+    if (msg.mentions.members.first() == undefined) return msg.reply('Menciona a un usuario (con @)')
+    const wanteduser = msg.mentions.members.first().user.username;
+    if (!wanteduser) return msg.reply('Menciona a un usuario')
+    const allinfo = id_list[wanteduser];
+    if (allinfo == undefined) return msg.reply('Este usuario no está registrado')
 
+    msg.channel.send({embed: {
+      color: 16757760,
+      footer: {
+        text: "Soy un bot creado por Alados5  |  Debería funcionar 24/7",
+        icon_url: client.user.avatarURL
+      },
+      image: {
+        url: allinfo.link
+      },
+      fields: [
+        {
+          name: "Nombre (en Discord)",
+          value: wanteduser
+        },
+        {
+          name: "Servidor",
+          value: allinfo.server
+        },
+        {
+          name: "ID",
+          value: allinfo.id
+        },
+        {
+          name: "Info adicional",
+          value: allinfo.info
+        }
+      ]
+    }})
+
+  }
+  
+  
+//------------------------------------------------------------------------- END SHOW
+  
+//------------------------------------------------------------------------- START ALLDATA  
+  
+
+  
+  
+//------------------------------------------------------------------------- END ALLDATA
+  
+//------------------------------------------------------------------------- START PRELOAD    
+  
+
+  
+  
+//------------------------------------------------------------------------- END PRELOAD
+  
+});
 
 
 // THIS  MUST  BE  THIS  WAY
