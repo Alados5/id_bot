@@ -249,6 +249,7 @@ client.on('message', msg => {
 
     msg.channel.send({embed: {
       color: 16757760,
+      title: "Your request",
       footer: {
         text: "I'm a bot created by Alados5  |  I should be online 24/7",
         icon_url: client.user.avatarURL
