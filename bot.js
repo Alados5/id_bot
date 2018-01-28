@@ -47,7 +47,7 @@ client.on('message', msg => {
           database += id_list[key]['info'] + ' ; ';
           database += id_list[key]['link'] + ';; \n';
           limitmsg += 1;
-          if limitmsg >= 10 {
+          if(limitmsg >= 10) {
             msg.channel.send(database)
             database = '';
             limitmsg = 0;
