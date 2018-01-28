@@ -38,13 +38,20 @@ client.on('message', msg => {
 //------------------------------------------------------------------------- START ALLDATA    
     if(msg.content == '!AllData') {
       var database = '';
+      var limitmsg = 0;
       for (var key in id_list) {
         if (id_list.hasOwnProperty(key)) {
           database += key + ' ; ';
           database += id_list[key]['id'] + ' ; ';
           database += id_list[key]['server'] + ' ; ';
           database += id_list[key]['info'] + ' ; ';
-          database += id_list[key]['link'] + ';; \n';          
+          database += id_list[key]['link'] + ';; \n';
+          limitmsg += 1;
+          if limitmsg >= 10 {
+            msg.channel.send(database)
+            database = '';
+            limitmsg = 0;
+          }
         }
       }
       msg.channel.send(database)
