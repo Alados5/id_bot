@@ -17,8 +17,8 @@ const GLdic = ['global', 'gb', 'gbl', 'glb', 'globest'];
   //client.user.setGame("Online")
 //});
 
-//var dpj = require("./database.json");
-var dpj = {"1492":["1492", "sabo legend"], "1935":["1935", "franky legend"]};
+var dpj = require("./captains.json");
+//var dpj = {"1492":["1492", "sabo legend"], "1935":["1935", "franky legend"]};
 var lf_list = {};
 
 function findnum(name, dic) {
