@@ -9,13 +9,31 @@ const charlieID = "389070076235481090";
 const fappingtonID = "391601707022549007";
 const joseluID = "210835574641262602";
 
-const JPdic = ['Japan', 'Japon', 'JP', 'Japonesa', 'Japo', 'japan', 'japon', 'jp', 'japonesa', 'japo'];
-const GLdic = ['Global', 'GB', 'global', 'gb'];
+const JPdic = ['japan', 'japon', 'jp', 'japonesa', 'japo', 'jap', 'jpn'];
+const GLdic = ['global', 'gb', 'gbl', 'glb', 'globest'];
 
 //client.on('ready', () => {
-  //client.user.setActivity(`${cfg.prefix}help | ${bot.guilds.size} servers`)
+  //client.user.setActivity(`${prefix}help`)
   //client.user.setGame("Online")
 //});
+
+//var dpj = require("./database.json");
+var dpj = {"1492":["1492", "sabo legend"], "1935":["1935", "franky legend"]};
+var lf_list = {};
+
+function findnum(name, dic) {
+  for (var num in dic) {
+    if (dic.hasOwnProperty(num)) {
+      var aliases = dic[num];
+      for (var alias=0; alias<aliases.length; alias++) {
+        if (aliases[alias] == name) {
+          return num
+        }
+      }
+    }
+  }
+  return '0004'
+}  
 
 client.on('message', msg => {
   //Checks if author is a bot or message doesn't start with prefix
@@ -225,10 +243,10 @@ client.on('message', msg => {
     if(isNaN(args[0]) == true) return msg.reply('Enter your ID number after !save')
     else if(args[0].length !== 9) return msg.reply('Your ID must have 9 digits, no spaces nor commas')
     
-    if (JPdic.indexOf(args[1]) >= 0) {
+    if (JPdic.indexOf(args[1].toLowerCase()) >= 0) {
       args[1] = "Japan";
     }
-    else if (GLdic.indexOf(args[1]) >= 0) {
+    else if (GLdic.indexOf(args[1].toLowerCase()) >= 0) {
       args[1] = "Global";
     }
     else {
@@ -268,10 +286,10 @@ client.on('message', msg => {
     if(isNaN(args[0]) == true) return msg.reply('Pon tu ID después de !guarda. 9 números seguidos')
     else if(args[0].length !== 9) return msg.reply('Tu ID debe tener 9 dígitos, sin espacios ni comas')
     
-    if (JPdic.indexOf(args[1]) >= 0) {
+    if (JPdic.indexOf(args[1].toLowerCase()) >= 0) {
       args[1] = "Japan";
     }
-    else if (GLdic.indexOf(args[1]) >= 0) {
+    else if (GLdic.indexOf(args[1].toLowerCase()) >= 0) {
       args[1] = "Global";
     }
     else {
@@ -387,6 +405,49 @@ client.on('message', msg => {
 
   
 //------------------------------------------------------------------------- END SHOW
+
+//------------------------------------------------------------------------- START IHAVE
+  
+  if(command == 'ihave') {
+    var tostore = msg.content.slice(7).toLowerCase();
+    tostore = tostore.split(',');
+    var stored = [];
+    for(item=0; item<tostore.length; item++) {
+      var charid = findnum(tostore[item], dpj);
+      stored.push(charid);
+    }
+    lf_list[msg.author.username] = stored;
+    
+    msg.reply('OK!')
+    
+  }
+  
+//------------------------------------------------------------------------- END IHAVE    
+  
+//------------------------------------------------------------------------- START LOOKINGFOR
+  
+  if(command == 'lookingfor') {
+    var tolook = msg.content.slice(12).toLowerCase();
+    var lookid = findnum(tolook, dpj);
+    var users = '';
+    for(var key in lf_list) {
+      if (lf_list.hasOwnProperty(num)) {
+        var user = key;
+        var idlist = lf_list[key];
+        for(id=0; id<idlist.length; id++) {
+          if(idlist[id] == lookid) {
+            users += msg.author.username;
+            users += ', ';
+          }
+        }
+      }      
+    }
+    if(users == '') return msg.reply('No registered users have ' + tolook)
+    
+    msg.channel.send('These users have ' + tolook + ': \n' + users.slice(0,-2))
+  }
+  
+//------------------------------------------------------------------------- END LOOKINGFOR  
   
 });
 
