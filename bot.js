@@ -433,10 +433,12 @@ client.on('message', msg => {
     for(var key in lf_list) {
       if (lf_list.hasOwnProperty(num)) {
         var user = key;
+        msg.channel.send(user)
         var idlist = lf_list[key];
         for(id=0; id<idlist.length; id++) {
+          msg.channel.send(idlist[id])
           if(idlist[id] == lookid) {
-            users += msg.author.username;
+            users += user;
             users += ', ';
           }
         }
