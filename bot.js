@@ -431,7 +431,7 @@ client.on('message', msg => {
     var lookid = findnum(tolook, dpj);
     var users = '';
     for(var key in lf_list) {
-      if (lf_list.hasOwnProperty(num)) {
+      if (lf_list.hasOwnProperty(key)) {
         var user = key;
         msg.channel.send(user)
         var idlist = lf_list[key];
