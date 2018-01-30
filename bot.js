@@ -410,7 +410,7 @@ client.on('message', msg => {
   
   if(command == 'ihave') {
     var tostore = msg.content.slice(7).toLowerCase();
-    tostore = tostore.split(',');
+    tostore = tostore.split(', ');
     var stored = [];
     for(item=0; item<tostore.length; item++) {
       var charid = findnum(tostore[item], dpj);
@@ -433,10 +433,8 @@ client.on('message', msg => {
     for(var key in lf_list) {
       if (lf_list.hasOwnProperty(key)) {
         var user = key;
-        msg.channel.send(user)
         var idlist = lf_list[key];
         for(id=0; id<idlist.length; id++) {
-          msg.channel.send(idlist[id])
           if(idlist[id] == lookid) {
             users += user;
             users += ', ';
