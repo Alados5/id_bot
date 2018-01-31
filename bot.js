@@ -97,7 +97,7 @@ client.on('message', msg => {
     
 //------------------------------------------------------------------------- START PRELOAD  
     
-    if (command == 'preloadID') {
+    if (command == 'preloadid') {
       msg.reply("Preloading ID data");  
       
       var bulkdata = msg.content.slice(11);
@@ -117,7 +117,7 @@ client.on('message', msg => {
       msg.channel.send("Update complete!");      
     }
  
-    if (command == 'preloadPJ') {
+    if (command == 'preloadpj') {
       msg.reply("Preloading PJ data");  
       
       var bulkdata = msg.content.slice(11);
