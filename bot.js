@@ -32,7 +32,7 @@ function findnum(name, dic) {
       }
     }
   }
-  return '0004'
+  return '-1'
 }  
 
 client.on('message', msg => {
@@ -155,7 +155,7 @@ client.on('message', msg => {
   
   if(command == 'help') {
     //message.reply('text');
-    msg.channel.send('Commands (EN): !save, !show');
+    msg.channel.send('Commands (EN): !save, !show, !ihave, !lookingfor');
     msg.channel.send({embed: {
       color: 16757760,
       author: {
@@ -187,7 +187,23 @@ client.on('message', msg => {
           value: "Show the ID of a user in the chat if he/she has saved it. "+
           "Call it with: ```\n !show @USER \n``` "+
           "You have to MENTION/TAG someone (it can be yourself!)"+
-          "\n If the user hasn't registered any info, it will also say so."
+          "\n If the user hasn't registered any info, it will also say so. \n \n -"
+        },
+        {
+          name: "!ihave",
+          value: "Save a list of your important captains. "+
+          "Call it with: ```\n !ihave [Cap. 1], [Cap. 2], [...] \n``` "+
+          "You have to separate each captain with commas and simple spaces."+
+          "\n This command is completely independent from !save"+
+          "\n Example: *!ihave Sabo Legend, Lucy Legend, Neko* \n \n -"
+        },
+        {
+          name: "!lookingfor",
+          value: "Search all the users that have a character. "+
+          "Call it with: ```\n !lookingfor [Captain] \n``` "+
+          "You can only look for one character per call."+
+          "\n This function is completely independent from !show"+
+          "\n Example: *!lookingfor Lucy Legend* \n \n -"
         }
       ]
     }})
@@ -196,7 +212,7 @@ client.on('message', msg => {
     
   if(command == 'ayuda') {
     //message.reply('text');
-    msg.channel.send('Comandos (ES): !guarda, !muestra');
+    msg.channel.send('Comandos (ES): !guarda, !muestra, !tengo, !buscoa');
     msg.channel.send({embed: {
       color: 16757760,
       author: {
@@ -228,7 +244,23 @@ client.on('message', msg => {
           value: "Muestra la ID de un usuario del chat si ha guardado sus datos. "+
           "Llamar con: ```\n !muestra @USER \n``` "+
           "Tienes que MENCIONAR a alguien (puedes ser tú mismo!)."+
-          "\n Si el usuario no ha registrado su info, se avisará."
+          "\n Si el usuario no ha registrado su info, se avisará. \n \n -"
+        },
+        {
+          name: "!tengo",
+          value: "Guarda una lista de capitanes importantes. "+
+          "Llamar con: ```\n !tengo [Capi 1], [Capi 2], [...] \n``` "+
+          "Hay que separar cada capitán con comas y espacios simples."+
+          "\n Esta función es totalmente independiente de !guarda"+
+          "\n Ejemplo: *!tengoa Sabo Legend, Lucy Legend, Neko* \n \n -"
+        },
+        {
+          name: "!buscoa",
+          value: "Busca los usuarios que tengan un personaje concreto. "+
+          "Llamar con: ```\n !buscoa [Capitán] \n``` "+
+          "Sólo se puede buscar a un personaje por llamada."+
+          "\n Esta función es totalmente independiente de !muestra"+
+          "\n Ejemplo: *!buscoa Lucy Legend* \n \n -"
         }
       ]
     }})
@@ -408,13 +440,16 @@ client.on('message', msg => {
 
 //------------------------------------------------------------------------- START IHAVE
   
-  if(command == 'ihave') {
+  if(command == 'ihave' || command == 'tengo') {
     var tostore = msg.content.slice(7).toLowerCase();
     tostore = tostore.split(', ');
     var stored = [];
     for(item=0; item<tostore.length; item++) {
       var charid = findnum(tostore[item], dpj);
-      stored.push(charid);
+      if(charid == '-1') msg.channel.send('Error')
+      else {
+        stored.push(charid);
+      }
     }
     lf_list[msg.author.username] = stored;
     
@@ -445,6 +480,27 @@ client.on('message', msg => {
     if(users == '') return msg.reply('No registered users have ' + tolook)
     
     msg.channel.send('These users have ' + tolook + ': \n' + users.slice(0,-2))
+  }
+  
+  if(command == 'buscoa') {
+    var tolook = msg.content.slice(8).toLowerCase();
+    var lookid = findnum(tolook, dpj);
+    var users = '';
+    for(var key in lf_list) {
+      if (lf_list.hasOwnProperty(key)) {
+        var user = key;
+        var idlist = lf_list[key];
+        for(id=0; id<idlist.length; id++) {
+          if(idlist[id] == lookid) {
+            users += user;
+            users += ', ';
+          }
+        }
+      }      
+    }
+    if(users == '') return msg.reply('Ningún usuario registrado tiene a ' + tolook)
+    
+    msg.channel.send('Estos usuarios tienen a ' + tolook + ': \n' + users.slice(0,-2))
   }
   
 //------------------------------------------------------------------------- END LOOKINGFOR  
