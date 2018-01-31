@@ -135,7 +135,6 @@ client.on('message', msg => {
         var charstoadd = parts[1].split(',');
         var listtoadd = [];
         for(k=0; k<charstoadd.length; k++) {
-          msg.channel.send(charstoadd[k])
           listtoadd.push(charstoadd[k]);
         }
             
@@ -522,9 +521,9 @@ client.on('message', msg => {
         }
       }      
     }
-    if(users == '') return msg.reply('No registered users have ' + tolook)
+    if(users == '') return msg.reply('No registered users have ' + msg.content.slice(12))
     
-    msg.channel.send('These users have ' + tolook + ': \n' + users.slice(0,-2))
+    msg.channel.send('These users have ' + msg.content.slice(12) + ': \n' + users.slice(0,-2))
   }
   
   if(command == 'buscoa') {
@@ -543,9 +542,9 @@ client.on('message', msg => {
         }
       }      
     }
-    if(users == '') return msg.reply('Ningún usuario registrado tiene a ' + tolook)
+    if(users == '') return msg.reply('Ningún usuario registrado tiene a ' + msg.content.slice(8))
     
-    msg.channel.send('Estos usuarios tienen a ' + tolook + ': \n' + users.slice(0,-2))
+    msg.channel.send('Estos usuarios tienen a ' + msg.content.slice(8) + ': \n' + users.slice(0,-2))
   }
   
 //------------------------------------------------------------------------- END LOOKINGFOR  
