@@ -126,7 +126,7 @@ client.on('message', msg => {
       for(j=0; j<lines.length; j++) {
         var parts = lines[j].split(' ; ');
             
-        var useri = parts[0]
+        var useri = parts[0];
         useri = useri.replace('\n', '');
         if (useri.slice(0,1) == ' ') {
           useri = useri.slice(1);
@@ -152,8 +152,9 @@ client.on('message', msg => {
       if (deluser == '') return msg.reply("Specify a user")
       
       delete id_list[deluser];
+      delete lf_list[deluser];
 
-      msg.channel.send('Deleted info of '+deluser)
+      msg.channel.send('Deleted all info of '+deluser)
 
     }
     
