@@ -54,7 +54,7 @@ client.on('message', msg => {
     }
     
 //------------------------------------------------------------------------- START ALLDATA    
-    if(msg.content == '!AllData') {
+    if(msg.content == '!AllDataID') {
       var database = '';
       var limitmsg = 0;
       for (var key in id_list) {
@@ -75,14 +75,32 @@ client.on('message', msg => {
       msg.channel.send(database)
     }
     
+    if(msg.content == '!AllDataPJ') {
+      var database = '';
+      var limitmsg = 0;
+      for (var key in lf_list) {
+        if (lf_list.hasOwnProperty(key)) {
+          database += key + ' ; ';
+          database += lf_list[key].toString() + ';; \n';
+          limitmsg += 1;
+          if(limitmsg >= 10) {
+            msg.channel.send(database)
+            database = '';
+            limitmsg = 0;
+          }
+        }
+      }
+      msg.channel.send(database)
+    }
+    
 //------------------------------------------------------------------------- END ALLDATA    
     
 //------------------------------------------------------------------------- START PRELOAD  
     
-    if (command == 'preload') {
-      msg.reply("Preloading");  
+    if (command == 'preloadID') {
+      msg.reply("Preloading ID data");  
       
-      var bulkdata = msg.content.slice(9);
+      var bulkdata = msg.content.slice(11);
       var lines = bulkdata.split(';;');
       
       for(j=0; j<lines.length; j++) {
@@ -97,7 +115,34 @@ client.on('message', msg => {
         id_list[useri] = {'id':parts[1], 'server':parts[2], 'info':parts[3], 'link':parts[4]};
       }       
       msg.channel.send("Update complete!");      
-    }      
+    }
+ 
+    if (command == 'preloadPJ') {
+      msg.reply("Preloading PJ data");  
+      
+      var bulkdata = msg.content.slice(11);
+      var lines = bulkdata.split(';;');
+      
+      for(j=0; j<lines.length; j++) {
+        var parts = lines[j].split(' ; ');
+            
+        var useri = parts[0]
+        useri = useri.replace('\n', '');
+        if (useri.slice(0,1) == ' ') {
+          useri = useri.slice(1);
+        }
+        
+        var charstoadd = parts[1].split(',');
+        var listtoadd = [];
+        for(k=0; k<charstoadd.length; k++) {
+          msg.channel.send(charstoadd[k])
+          listtoadd.push(charstoadd[k]);
+        }
+            
+        lf_list[useri] = listtoadd;
+      }       
+      msg.channel.send("Update complete!");      
+    }
     
 //------------------------------------------------------------------------- END PRELOAD  
     
