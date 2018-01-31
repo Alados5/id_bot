@@ -225,7 +225,7 @@ client.on('message', msg => {
           "\n Separate everything with simple spaces."+
           "\n \n OPTIONAL: Add any text info you want after that, and/or a link to a picture of your box."+
           "\n **IMPORTANT!** All links must begin with 'http', copying a picture doesn't count!! \n \n Example: "+
-          "\n *!save 123456789 Japan P-Lv.300, I have Lucy and Neko quadmax. https://imgur.com/r/OnePieceTC/t3cRD* \n \n -"
+          "\n *!save 123456789 Japan P-Lv.300, I have Lucy and Neko quadmax. https://i.imgur.com/FNtX9gh.jpg* \n \n -"
         },
         {
           name: "!show",
@@ -282,7 +282,7 @@ client.on('message', msg => {
           "\n Se debe separar todo con espacios sencillos."+
           "\n \n OPCIONAL: Añade cualquier info que quieras escribiendo algo después de eso y/o con un link a una foto de tu box."+
           "\n **IMPORTANTE!** Todos los links deben empezar con 'http'. No vale copiar foto!! \n \n Ejemplo: "+
-          "\n *!guarda 123456789 Japan P-Lv.300, Tengo Lucy y Neko quadmax https://imgur.com/r/OnePieceTC/t3cRD* \n \n -"
+          "\n *!guarda 123456789 Japan P-Lv.300, Tengo Lucy y Neko quadmax https://i.imgur.com/FNtX9gh.jpg* \n \n -"
         },
         {
           name: "!muestra",
@@ -489,16 +489,20 @@ client.on('message', msg => {
     var tostore = msg.content.slice(7).toLowerCase();
     tostore = tostore.split(', ');
     var stored = [];
+    var correct = 0;
     for(item=0; item<tostore.length; item++) {
       var charid = findnum(tostore[item], dpj);
-      if(charid == '-1') msg.channel.send('Error')
+      if(charid == '-1') {
+        msg.channel.send('Error: ' + tostore[item])
+      }
       else {
         stored.push(charid);
+        correct += 1;
       }
     }
     lf_list[msg.author.username] = stored;
     
-    msg.reply('OK!')
+    msg.reply(correct + ' OK!')
     
   }
   
