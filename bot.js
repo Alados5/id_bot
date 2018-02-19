@@ -3,6 +3,7 @@ const client = new Discord.Client();
 var fs = require('fs');
 
 var id_list = {};
+var lf_list = {};
 const prefix = '!';
 
 const ownerID = "284104569586450434";
@@ -19,7 +20,6 @@ const GLdic = ['global', 'gb', 'gbl', 'glb', 'globest'];
 //});
 
 var dpj = require("./captains.json");
-var lf_list = {};
 
 function findnum(name, dic) {
   for (var num in dic) {
@@ -133,12 +133,12 @@ client.on('message', msg => {
         }
         
         var charstoadd = parts[1].split(',');
-        msg.channel.send(charstoadd.length)
-        
-      //  var listtoadd = [];
-      //  for(k=0; k<charstoadd.length; k++) {
-      //    listtoadd.push(charstoadd[k]);
-      //  }
+        var listtoadd = [];
+        for(k=0; k<charstoadd.length; k++) {
+          listtoadd.push(charstoadd[k]);
+        }
+        msg.channel.send(useri)
+        msg.channel.send(listtoadd)
             
       //  lf_list[useri] = listtoadd;
       }       
