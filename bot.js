@@ -53,6 +53,13 @@ client.on('message', msg => {
       msg.reply('What is thy bidding, my Master?')
     }
     
+    if(msg.content == '!File') {
+      fs.open('testfile.txt', 'w', function (err, file) {
+        if (err) throw err;
+        msg.channel.send('Done!');
+      });
+    }
+    
 //------------------------------------------------------------------------- START ALLDATA    
     if(msg.content == '!AllDataID') {
       var database = '';
