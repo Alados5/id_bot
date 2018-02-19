@@ -131,10 +131,10 @@ client.on('message', msg => {
         if (useri.slice(0,1) == ' ') {
           useri = useri.slice(1);
         }
-        msg.channel.send(useri)
-        msg.channel.send(parts.length)
         
-      //  var charstoadd = parts[1].split(',');
+        var charstoadd = parts[1].split(',');
+        msg.channel.send(charstoadd.length)
+        
       //  var listtoadd = [];
       //  for(k=0; k<charstoadd.length; k++) {
       //    listtoadd.push(charstoadd[k]);
