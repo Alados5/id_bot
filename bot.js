@@ -137,10 +137,9 @@ client.on('message', msg => {
         for(k=0; k<charstoadd.length; k++) {
           listtoadd.push(charstoadd[k]);
         }
-        msg.channel.send(useri)
-        msg.channel.send(listtoadd)
             
-      //  lf_list[useri] = listtoadd;
+        lf_list[useri] = listtoadd;
+        msg.channel.send(lf_list[useri])
       }       
       //msg.channel.send("Update complete!");      
     }
