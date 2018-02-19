@@ -81,7 +81,7 @@ client.on('message', msg => {
       for (var key in lf_list) {
         if (lf_list.hasOwnProperty(key)) {
           database += key + ' ; ';
-          database += lf_list[key].toString() + ';; \n';
+          database += lf_list[key] + ';; \n';
           limitmsg += 1;
           if(limitmsg >= 10) {
             msg.channel.send(database)
@@ -141,7 +141,7 @@ client.on('message', msg => {
       //  }
             
       //  lf_list[useri] = listtoadd;
-      //}       
+      }       
       //msg.channel.send("Update complete!");      
     }
     
