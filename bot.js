@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+var fs = require('fs');
 
 var id_list = {};
 const prefix = '!';
@@ -9,7 +10,7 @@ const charlieID = "389070076235481090";
 const fappingtonID = "391601707022549007";
 const joseluID = "210835574641262602";
 
-const JPdic = ['japan', 'japon', 'jp', 'japonesa', 'japo', 'jap', 'jpn'];
+const JPdic = ['japan', 'japon', 'japón', 'jp', 'japonesa', 'japo', 'jap', 'jpn'];
 const GLdic = ['global', 'gb', 'gbl', 'glb', 'globest'];
 
 //client.on('ready', () => {
@@ -18,7 +19,6 @@ const GLdic = ['global', 'gb', 'gbl', 'glb', 'globest'];
 //});
 
 var dpj = require("./captains.json");
-//var dpj = {"1492":["1492", "sabo legend"], "1935":["1935", "franky legend"]};
 var lf_list = {};
 
 function findnum(name, dic) {
@@ -106,7 +106,7 @@ client.on('message', msg => {
       for(j=0; j<lines.length; j++) {
         var parts = lines[j].split(' ; ');
             
-        var useri = parts[0]
+        var useri = parts[0];
         useri = useri.replace('\n', '');
         if (useri.slice(0,1) == ' ') {
           useri = useri.slice(1);
@@ -122,25 +122,26 @@ client.on('message', msg => {
       
       var bulkdata = msg.content.slice(11);
       var lines = bulkdata.split(';;');
+      msg.channel.send(lines.length)
       
-      for(j=0; j<lines.length; j++) {
-        var parts = lines[j].split(' ; ');
+      //for(j=0; j<lines.length; j++) {
+      //  var parts = lines[j].split(' ; ');
             
-        var useri = parts[0];
-        useri = useri.replace('\n', '');
-        if (useri.slice(0,1) == ' ') {
-          useri = useri.slice(1);
-        }
+      //  var useri = parts[0];
+      //  useri = useri.replace('\n', '');
+      //  if (useri.slice(0,1) == ' ') {
+      //    useri = useri.slice(1);
+      //  }
         
-        var charstoadd = parts[1].split(',');
-        var listtoadd = [];
-        for(k=0; k<charstoadd.length; k++) {
-          listtoadd.push(charstoadd[k]);
-        }
+      //  var charstoadd = parts[1].split(',');
+      //  var listtoadd = [];
+      //  for(k=0; k<charstoadd.length; k++) {
+      //    listtoadd.push(charstoadd[k]);
+      //  }
             
-        lf_list[useri] = listtoadd;
-      }       
-      msg.channel.send("Update complete!");      
+      //  lf_list[useri] = listtoadd;
+      //}       
+      //msg.channel.send("Update complete!");      
     }
     
 //------------------------------------------------------------------------- END PRELOAD  
