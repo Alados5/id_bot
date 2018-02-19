@@ -122,16 +122,17 @@ client.on('message', msg => {
       
       var bulkdata = msg.content.slice(11);
       var lines = bulkdata.split(';;');
-      msg.channel.send(lines.length)
       
-      //for(j=0; j<lines.length; j++) {
-      //  var parts = lines[j].split(' ; ');
+      for(j=0; j<lines.length; j++) {
+        var parts = lines[j].split(' ; ');
             
-      //  var useri = parts[0];
-      //  useri = useri.replace('\n', '');
-      //  if (useri.slice(0,1) == ' ') {
-      //    useri = useri.slice(1);
-      //  }
+        var useri = parts[0];
+        useri = useri.replace('\n', '');
+        if (useri.slice(0,1) == ' ') {
+          useri = useri.slice(1);
+        }
+        msg.channel.send(useri)
+        msg.channel.send(parts.length)
         
       //  var charstoadd = parts[1].split(',');
       //  var listtoadd = [];
