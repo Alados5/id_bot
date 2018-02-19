@@ -139,9 +139,9 @@ client.on('message', msg => {
         }
             
         lf_list[useri] = listtoadd;
-        msg.channel.send(lf_list[useri])
+
       }       
-      //msg.channel.send("Update complete!");      
+      msg.channel.send("Update complete!");      
     }
     
 //------------------------------------------------------------------------- END PRELOAD  
