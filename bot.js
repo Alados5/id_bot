@@ -168,6 +168,30 @@ client.on('message', msg => {
     
 //------------------------------------------------------------------------- END DELETEUSER  
     
+//------------------------------------------------------------------------- START SPAM    
+
+    if(command == 'spam') {    
+      var action = msg.content.slice(6);
+      if (action == '') return msg.reply("Action Required")
+      else if (action == '1') {
+        msg.reply('You activated the Bot Sleep Prevention Procedure')
+        var interval = setInterval (function () {
+            // use the message's channel (TextChannel) to send a new message
+            msg.channel.send("Remembering Data...")
+        }, 5000); 
+      }
+      else if (action == '0') {
+        msg.reply('You deactivated the Bot Sleep Prevention Procedure')
+        clearInterval(interval);
+      }
+      else {
+        msg.reply('Action Invalid')
+      }
+
+    }
+    
+//------------------------------------------------------------------------- END SPAM
+    
   }
 
 //------------------------------------------------------------------------- END ADMIN COMMANDS
