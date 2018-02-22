@@ -175,14 +175,15 @@ client.on('message', msg => {
       if (action == '') return msg.reply("Action Required")
       else if (action == '1') {
         msg.reply('You activated the Bot Sleep Prevention Procedure')
-        var interval = setInterval (function () {
-            // use the message's channel (TextChannel) to send a new message
-            msg.channel.send("Remembering Data...")
-        }, 5000); 
+        var myInterval = setInterval (function () {
+          var now = new Date();
+          var tnow = now.getHours() + ':' + now.getMinutes(); 
+          msg.channel.send(tnow + " - Remembering Data...")
+        }, 300000); //every 5 minutes (5*60*1000)
       }
       else if (action == '0') {
         msg.reply('You deactivated the Bot Sleep Prevention Procedure')
-        clearInterval(interval);
+        clearInterval(myInterval);
       }
       else {
         msg.reply('Action Invalid')
