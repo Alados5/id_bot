@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var fs = require('fs');
 
 var id_list = {};
 var lf_list = {};
@@ -51,13 +50,6 @@ client.on('message', msg => {
   if(msg.author.id == ownerID) {
     if(msg.content == '!MyBot') {
       msg.reply('What is thy bidding, my Master?')
-    }
-    
-    if(msg.content == '!File') {
-      fs.open('testfile.txt', 'w', function (err, file) {
-        if (err) throw err;
-        msg.channel.send('Done!');
-      });
     }
     
 //------------------------------------------------------------------------- START ALLDATA    
@@ -162,7 +154,7 @@ client.on('message', msg => {
       delete id_list[deluser];
       delete lf_list[deluser];
 
-      msg.channel.send('Deleted all info of '+deluser)
+      msg.channel.send('Deleted all info of '+ deluser)
 
     }
     
@@ -177,12 +169,18 @@ client.on('message', msg => {
         msg.reply('You activated the Bot Sleep Prevention Procedure')
         var myInterval = setInterval (function () {
           var now = new Date();
-          var tnow = now.getHours() + ':' + now.getMinutes(); 
+          var hora = now.getHours();
+          hora += 1;
+          if (hora == 24) hora = 0;
+          if (hora<10) hora = '0' + hora;
+          var mins = now.getMinutes();
+          if (mins<10) mins = '0' + mins;
+          var tnow = hora + ':' + mins; 
           msg.channel.send(tnow + " - Remembering Data...")
-        }, 300000); //every 5 minutes (5*60*1000)
+        }, 600000); //every 10 minutes (10*60*1000)
       }
       else if (action == '0') {
-        msg.reply('You deactivated the Bot Sleep Prevention Procedure')
+        msg.reply('You deactivated the Bot Sleep Prevention Procedure (or not)')
         clearInterval(myInterval);
       }
       else {
