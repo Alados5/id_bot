@@ -183,8 +183,8 @@ client.on('message', msg => {
           var mins = now.getMinutes();
           if (mins<10) mins = '0' + mins;
           var tnow = hora + ':' + mins; 
-          msg.channel.send(tnow + " - Remembering Data...")
-        }, 60000); //every 1 minutes (1*60*1000)
+          msg.channel.send("! " + tnow + " - Remembering Data...")
+        }, 10000); //every 10 seconds (1*10*1000)
       }
       else if (action == '0') {
         msg.reply('You deactivated the Bot Sleep Prevention Procedure (or not)')
@@ -201,10 +201,8 @@ client.on('message', msg => {
 //------------------------------------------------------------------------- START BOT (SELF) COMMANDS  
 
   if(msg.author.id == botID) {
-    rem += 1;
-    if(rem >= 2) {
-      rem = 0;
-      msg.channel.send("!spam X")
+    if (rem < 4) {
+      msg.channel.send("Hey, me!")
     }
   }
   
@@ -599,6 +597,21 @@ client.on('message', msg => {
   }
   
 //------------------------------------------------------------------------- END LOOKINGFOR  
+  
+//------------------------------------------------------------------------- START NAMES  
+
+  if (command == 'names') {
+    var chartolook = msg.content.slice(7).toLowerCase();
+    var charid = findnum(chartolook, dpj);
+    if (charid == '-1') return msg.channel.send('Character Name Error')
+    var lnames = dpj[charid];
+    lnames = lnames.toString();
+    lnames = lnames.replace(/,/g, ', ');
+    lnames = '```' + lnames + '```';
+    msg.channel.send(lnames)
+  }  
+  
+//------------------------------------------------------------------------- END NAMES
   
 });
 
