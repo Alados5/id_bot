@@ -3,6 +3,7 @@ const client = new Discord.Client();
 
 var id_list = {};
 var lf_list = {};
+var rem = 0;
 const prefix = '!';
 
 const ownerID = "284104569586450434";
@@ -199,12 +200,11 @@ client.on('message', msg => {
   
 //------------------------------------------------------------------------- START BOT (SELF) COMMANDS  
 
-var rem = 0;
   if(msg.author.id == botID) {
     rem += 1;
-    if(rem >= 5) {
+    if(rem >= 2) {
       rem = 0;
-      msg.channel.send("spam 1")
+      msg.channel.send("!spam X")
     }
   }
   
