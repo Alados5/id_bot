@@ -183,8 +183,8 @@ client.on('message', msg => {
           var mins = now.getMinutes();
           if (mins<10) mins = '0' + mins;
           var tnow = hora + ':' + mins; 
-          msg.channel.send("! " + tnow + " - Remembering Data...")
-        }, 10000); //every 10 seconds (1*10*1000)
+          msg.channel.send("! - " + tnow + " - Remembering Data...")
+        }, 60000); //every 1 minute (1*60*1000)
       }
       else if (action == '0') {
         msg.reply('You deactivated the Bot Sleep Prevention Procedure (or not)')
@@ -201,8 +201,10 @@ client.on('message', msg => {
 //------------------------------------------------------------------------- START BOT (SELF) COMMANDS  
 
   if(msg.author.id == botID) {
-    if (rem < 4) {
-      msg.channel.send("Hey, me!")
+    rem += 1;
+    if (rem >= 2) {
+      msg.channel.send("!spam X")
+      rem = 0;
     }
   }
   
