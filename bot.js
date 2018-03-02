@@ -9,6 +9,7 @@ const ownerID = "284104569586450434";
 const charlieID = "389070076235481090";
 const fappingtonID = "391601707022549007";
 const joseluID = "210835574641262602";
+const botID = "402991299776741397";
 
 const JPdic = ['japan', 'japon', 'japón', 'jp', 'japonesa', 'japo', 'jap', 'jpn'];
 const GLdic = ['global', 'gb', 'gbl', 'glb', 'globest'];
@@ -36,7 +37,7 @@ function findnum(name, dic) {
 
 client.on('message', msg => {
   //Checks if author is a bot or message doesn't start with prefix
-  if(msg.author.bot || !msg.content.startsWith(prefix)) return;
+  if((msg.author.bot && msg.author.id == botID) || !msg.content.startsWith(prefix)) return;
 
 
 //------------------------------------------------------------------------- START ADMIN COMMANDS  
@@ -194,6 +195,21 @@ client.on('message', msg => {
   }
 
 //------------------------------------------------------------------------- END ADMIN COMMANDS
+  
+//------------------------------------------------------------------------- START BOT (SELF) COMMANDS  
+
+var rem = 0;
+  if(msg.author.id == botID) {
+    if(msg.content == "Remember me!") {
+      rem += 1;
+      if (rem >= 20) {
+        rem = 0;
+        msg.channel.send("Remember me!")
+      }
+    }
+  }
+  
+//------------------------------------------------------------------------- END BOT (SELF) COMMANDS 
   
 //------------------------------------------------------------------------- START USER COMMANDS  
   
