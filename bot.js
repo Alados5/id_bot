@@ -51,6 +51,7 @@ client.on('message', msg => {
   if(msg.author.id == ownerID) {
     if(msg.content == '!MyBot') {
       msg.reply('What is thy bidding, my Master?')
+      msg.channel.send("Remember me!")
     }
     
 //------------------------------------------------------------------------- START ALLDATA    
