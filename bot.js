@@ -37,7 +37,7 @@ function findnum(name, dic) {
 
 client.on('message', msg => {
   //Checks if author is a bot or message doesn't start with prefix
-  if((msg.author.bot && msg.author.id == botID) || !msg.content.startsWith(prefix)) return;
+  if((msg.author.bot && msg.author.id != botID) || !msg.content.startsWith(prefix)) return;
 
 
 //------------------------------------------------------------------------- START ADMIN COMMANDS  
@@ -51,7 +51,6 @@ client.on('message', msg => {
   if(msg.author.id == ownerID) {
     if(msg.content == '!MyBot') {
       msg.reply('What is thy bidding, my Master?')
-      msg.channel.send("Remember me!")
     }
     
 //------------------------------------------------------------------------- START ALLDATA    
@@ -162,8 +161,13 @@ client.on('message', msg => {
     
 //------------------------------------------------------------------------- END DELETEUSER  
     
+  }
+
+//------------------------------------------------------------------------- END ADMIN COMMANDS
+    
 //------------------------------------------------------------------------- START SPAM    
 
+  if(msg.author.id == botID || msg.author.id == ownerID) {
     if(command == 'spam') {    
       var action = msg.content.slice(6);
       if (action == '') return msg.reply("Action Required")
@@ -179,7 +183,7 @@ client.on('message', msg => {
           if (mins<10) mins = '0' + mins;
           var tnow = hora + ':' + mins; 
           msg.channel.send(tnow + " - Remembering Data...")
-        }, 600000); //every 10 minutes (10*60*1000)
+        }, 60000); //every 1 minutes (1*60*1000)
       }
       else if (action == '0') {
         msg.reply('You deactivated the Bot Sleep Prevention Procedure (or not)')
@@ -193,20 +197,16 @@ client.on('message', msg => {
     
 //------------------------------------------------------------------------- END SPAM
     
-  }
 
-//------------------------------------------------------------------------- END ADMIN COMMANDS
   
 //------------------------------------------------------------------------- START BOT (SELF) COMMANDS  
 
 var rem = 0;
   if(msg.author.id == botID) {
-    if(msg.content == "Remember me!") {
-      rem += 1;
-      if (rem >= 20) {
-        rem = 0;
-        msg.channel.send("Remember me!")
-      }
+    rem += 1;
+    if(rem >= 5) {
+      rem = 0;
+      msg.channel.send("spam 1")
     }
   }
   
