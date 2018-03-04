@@ -177,10 +177,9 @@ client.on('message', msg => {
 //------------------------------------------------------------------------- START PRELOAD  
     
     if (command == 'preloadid') {
-      msg.reply("Preloading ID data");  
-      var bulkdata = msg.content.slice(11);
-      preloadData('ID', bulkdata)
+      msg.reply("Preloading ID data"); 
       
+      var bulkdata = msg.content.slice(11);
       var lines = bulkdata.split(';;');
       
       for(j=0; j<lines.length; j++) {
