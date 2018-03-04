@@ -34,7 +34,12 @@ function findnum(name, dic) {
     }
   }
   return '-1'
-}  
+}
+
+function sendAllData(datatype, auto) {
+  return 0
+}
+
 
 client.on('message', msg => {
   //Checks if author is a bot or message doesn't start with prefix
@@ -174,7 +179,7 @@ client.on('message', msg => {
       if (action == '') return msg.reply("Action Required")
       else if (action == '1') {
         msg.reply('You activated the Bot Sleep Prevention Procedure')
-        var myInterval = setInterval (function () {
+        myInterval = setInterval (function () {
           var now = new Date();
           var hora = now.getHours();
           hora += 1;
@@ -184,7 +189,7 @@ client.on('message', msg => {
           if (mins<10) mins = '0' + mins;
           var tnow = hora + ':' + mins; 
           msg.channel.send("! - " + tnow + " - Remembering Data...")
-        }, 600000); //every 10 minutes (10*60*1000)
+        }, 5000); //every 5 seconds (5*1000)
       }
       else if (action == '0') {
         msg.reply('You deactivated the Bot Sleep Prevention Procedure (or not)')
@@ -202,7 +207,7 @@ client.on('message', msg => {
 
   if(msg.author.id == botID) {
     rem += 1;
-    if (rem >= 12) {
+    if (rem >= 100) { //30 = 5 hours at 10min/msg
       msg.channel.send("!spam 0")
       msg.channel.send("!spam 1")
       rem = 0;
