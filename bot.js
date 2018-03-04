@@ -113,17 +113,6 @@ client.on('message', msg => {
       else msg.channel.send("You didn't specify a data type")
     }
     
-    if(command == 'autodata') {
-      var alldataids = sendAllData('ID');
-      var alldatapjs = sendAllData('PJ');
-      for(mi=0; mi<alldataids.length; mi++) {
-        msg.channel.send("!PreloadID " + alldataids[mi])
-      }
-      for(mj=0; mj<alldatapjs.length; mj++) {
-        msg.channel.send("!PreloadPJ " + alldatapjs[mj])
-      }
-    }
-    
 //------------------------------------------------------------------------- END ALLDATA    
     
 //------------------------------------------------------------------------- START DELETEUSER    
@@ -161,7 +150,7 @@ client.on('message', msg => {
           if (mins<10) mins = '0' + mins;
           var tnow = hora + ':' + mins; 
           msg.channel.send("!! - " + tnow + " - Remembering Data...")
-        }, 5000); //every 5 seconds (5*1000)
+        }, 60000); //every 1 minute (60*1000)
       }
       else if (action == '0') {
         msg.reply('You deactivated the Bot Sleep Prevention Procedure')
@@ -173,6 +162,21 @@ client.on('message', msg => {
     }
     
 //------------------------------------------------------------------------- END SPAM 
+    
+//------------------------------------------------------------------------- START AUTODATA 
+    
+    if(command == 'autodata') {
+      var alldataids = sendAllData('ID');
+      var alldatapjs = sendAllData('PJ');
+      for(mi=0; mi<alldataids.length; mi++) {
+        msg.channel.send("!PreloadID " + alldataids[mi])
+      }
+      for(mj=0; mj<alldatapjs.length; mj++) {
+        msg.channel.send("!PreloadPJ " + alldatapjs[mj])
+      }
+    }
+
+//------------------------------------------------------------------------- END AUTODATA
     
 //------------------------------------------------------------------------- START PRELOAD  
     
@@ -225,8 +229,9 @@ client.on('message', msg => {
 
   if(msg.author.id == botID && msg.content.slice(1,2) == '!') {
     rem += 1;
-    if (rem >= 6) { //30 = 5 hours at 10min/msg
+    if (rem >= 3) { //30 = 5 hours at 10min/msg
       msg.channel.send("!spam 0")
+      msg.channel.send("!autodata")
       msg.channel.send("!spam 1")
       rem = 0;
     }
@@ -257,10 +262,10 @@ client.on('message', msg => {
                                               
   if(msg.author.id == joseluID) {
     if (msg.content == '!QuienSoy') {
-      msg.reply('el mejor youtuber de OPTC en español. Y un puto whale rager ;)')
+      msg.reply('el mejor youtuber de OPTC en español. Y un puto whale rager <3')
     }
     if (msg.content == '!Hey') {
-      msg.reply('¡Muy buenas, JoseLu! ¿Qué tal andamos? Tienes a Lucy... Y A CROCO. No necesitas saber más')
+      msg.reply('¡Muy buenas, JoseLu! ¿Qué tal andamos? Tienes a Lucy, a Neptune... Y A CROCO 6+. No necesitas saber más!')
     }
   }
     
