@@ -192,7 +192,7 @@ client.on('message', msg => {
         }, 5000); //every 5 seconds (5*1000)
       }
       else if (action == '0') {
-        msg.reply('You deactivated the Bot Sleep Prevention Procedure (or not)')
+        msg.reply('You deactivated the Bot Sleep Prevention Procedure')
         clearInterval(myInterval);
       }
       else {
@@ -207,7 +207,7 @@ client.on('message', msg => {
 
   if(msg.author.id == botID) {
     rem += 1;
-    if (rem >= 100) { //30 = 5 hours at 10min/msg
+    if (rem >= 6) { //30 = 5 hours at 10min/msg
       msg.channel.send("!spam 0")
       msg.channel.send("!spam 1")
       rem = 0;
