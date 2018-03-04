@@ -176,9 +176,7 @@ client.on('message', msg => {
     
 //------------------------------------------------------------------------- START PRELOAD  
     
-    if (command == 'preloadid') {
-      msg.reply("Preloading ID data"); 
-      
+    if (command == 'preloadid') { 
       var bulkdata = msg.content.slice(11);
       if (bulkdata.slice(-2) == ';;') bulkdata = bulkdata.slice(0,-2);
       var lines = bulkdata.split(';;');
@@ -194,12 +192,10 @@ client.on('message', msg => {
             
         id_list[useri] = {'id':parts[1], 'server':parts[2], 'info':parts[3], 'link':parts[4]};
       }       
-      msg.channel.send("Update complete!");      
+      msg.reply("Preloaded ID data!");      
     }
  
-    if (command == 'preloadpj') {
-      msg.reply("Preloading PJ data");  
-      
+    if (command == 'preloadpj') {     
       var bulkdata = msg.content.slice(11);
       if (bulkdata.slice(-2) == ';;') bulkdata = bulkdata.slice(0,-2); 
       var lines = bulkdata.split(';;');
@@ -216,7 +212,7 @@ client.on('message', msg => {
             
         lf_list[useri] = charstoadd;
       }       
-      msg.channel.send("Update complete!");      
+      msg.reply("Preloaded PJ data!");      
     }
     
 //------------------------------------------------------------------------- END PRELOAD
