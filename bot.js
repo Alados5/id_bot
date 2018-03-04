@@ -230,7 +230,7 @@ client.on('message', msg => {
   
 //------------------------------------------------------------------------- START BOT (SELF) COMMANDS  
 
-  if(msg.author.id == botID && msg.content.slice(1,2) == '!' {
+  if(msg.author.id == botID && msg.content.slice(1,2) == '!') {
     rem += 1;
     if (rem >= 6) { //30 = 5 hours at 10min/msg
       msg.channel.send("!spam 0")
