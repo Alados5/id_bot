@@ -213,7 +213,7 @@ client.on('message', msg => {
           var mins = now.getMinutes();
           if (mins<10) mins = '0' + mins;
           var tnow = hora + ':' + mins; 
-          msg.channel.send("! - " + tnow + " - Remembering Data...")
+          msg.channel.send("!! - " + tnow + " - Remembering Data...")
         }, 5000); //every 5 seconds (5*1000)
       }
       else if (action == '0') {
@@ -230,7 +230,7 @@ client.on('message', msg => {
   
 //------------------------------------------------------------------------- START BOT (SELF) COMMANDS  
 
-  if(msg.author.id == botID) {
+  if(msg.author.id == botID && msg.content.slice(1,2) == '!' {
     rem += 1;
     if (rem >= 6) { //30 = 5 hours at 10min/msg
       msg.channel.send("!spam 0")
