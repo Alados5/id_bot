@@ -36,8 +36,31 @@ function findnum(name, dic) {
   return '-1'
 }
 
-function sendAllData(datatype, auto) {
-  return 0
+function sendAllData(datatype) {
+  var database = '';
+  var messages = [];
+  var limitmsg = 0;
+  if (datatype == 'ID') {
+    for (var key in id_list) {
+      if (id_list.hasOwnProperty(key)) {
+        database += key + ' ; ';
+        database += id_list[key]['id'] + ' ; ';
+        database += id_list[key]['server'] + ' ; ';
+        database += id_list[key]['info'] + ' ; ';
+        database += id_list[key]['link'] + ';; \n';
+        limitmsg += 1;
+        if(limitmsg >= 10) {
+          messages.push(database);
+          database = '';
+          limitmsg = 0;
+        }
+      }
+    }
+    return messages
+  }
+  else if (datatype == 'PJ') {
+    return 0
+  }
 }
 
 
@@ -60,25 +83,18 @@ client.on('message', msg => {
     }
     
 //------------------------------------------------------------------------- START ALLDATA    
-    if(msg.content == '!AllDataID') {
-      var database = '';
-      var limitmsg = 0;
-      for (var key in id_list) {
-        if (id_list.hasOwnProperty(key)) {
-          database += key + ' ; ';
-          database += id_list[key]['id'] + ' ; ';
-          database += id_list[key]['server'] + ' ; ';
-          database += id_list[key]['info'] + ' ; ';
-          database += id_list[key]['link'] + ';; \n';
-          limitmsg += 1;
-          if(limitmsg >= 10) {
-            msg.channel.send(database)
-            database = '';
-            limitmsg = 0;
-          }
+    if(command == 'alldata') {
+      if(args[0] == 'id') {
+        var alldataids = sendAllData('ID');
+        for(m=0; m<alldataids.length; m++) {
+         msg.channel.send(alldataids[m])
         }
       }
-      msg.channel.send(database)
+      else if(args[0] == 'pj') {
+        var alldatapjs = sendAllData('PJ');
+        msg.channel.send(alldatapjs)
+      }
+      else msg.channel.send("You didn't specify a data type")
     }
     
     if(msg.content == '!AllDataPJ') {
