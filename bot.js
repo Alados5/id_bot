@@ -126,57 +126,6 @@ client.on('message', msg => {
     
 //------------------------------------------------------------------------- END ALLDATA    
     
-//------------------------------------------------------------------------- START PRELOAD  
-    
-    if (command == 'preloadid') {
-      msg.reply("Preloading ID data");  
-      
-      var bulkdata = msg.content.slice(11);
-      var lines = bulkdata.split(';;');
-      
-      for(j=0; j<lines.length; j++) {
-        var parts = lines[j].split(' ; ');
-            
-        var useri = parts[0];
-        useri = useri.replace('\n', '');
-        if (useri.slice(0,1) == ' ') {
-          useri = useri.slice(1);
-        }    
-            
-        id_list[useri] = {'id':parts[1], 'server':parts[2], 'info':parts[3], 'link':parts[4]};
-      }       
-      msg.channel.send("Update complete!");      
-    }
- 
-    if (command == 'preloadpj') {
-      msg.reply("Preloading PJ data");  
-      
-      var bulkdata = msg.content.slice(11);
-      var lines = bulkdata.split(';;');
-      
-      for(j=0; j<lines.length; j++) {
-        var parts = lines[j].split(' ; ');
-            
-        var useri = parts[0];
-        useri = useri.replace('\n', '');
-        if (useri.slice(0,1) == ' ') {
-          useri = useri.slice(1);
-        }
-        
-        var charstoadd = parts[1].split(',');
-        var listtoadd = [];
-        for(k=0; k<charstoadd.length; k++) {
-          listtoadd.push(charstoadd[k]);
-        }
-            
-        lf_list[useri] = listtoadd;
-
-      }       
-      msg.channel.send("Update complete!");      
-    }
-    
-//------------------------------------------------------------------------- END PRELOAD  
-    
 //------------------------------------------------------------------------- START DELETEUSER    
 
     if(command == 'deleteuser') {    
@@ -225,14 +174,53 @@ client.on('message', msg => {
     
 //------------------------------------------------------------------------- END SPAM 
     
-    if(command == 'preloadid') {
-      msg.reply("Soon!")
+//------------------------------------------------------------------------- START PRELOAD  
+    
+    if (command == 'preloadid') {
+      msg.reply("Preloading ID data");  
+      var bulkdata = msg.content.slice(11);
+      preloadData('ID', bulkdata)
+      
+      var lines = bulkdata.split(';;');
+      
+      for(j=0; j<lines.length; j++) {
+        var parts = lines[j].split(' ; ');
+            
+        var useri = parts[0];
+        useri = useri.replace('\n', '');
+        if (useri.slice(0,1) == ' ') {
+          useri = useri.slice(1);
+        }    
+            
+        id_list[useri] = {'id':parts[1], 'server':parts[2], 'info':parts[3], 'link':parts[4]};
+      }       
+      msg.channel.send("Update complete!");      
+    }
+ 
+    if (command == 'preloadpj') {
+      msg.reply("Preloading PJ data");  
+      
+      var bulkdata = msg.content.slice(11);
+      var lines = bulkdata.split(';;');
+      
+      for(j=0; j<lines.length; j++) {
+        var parts = lines[j].split(' ; ');
+            
+        var useri = parts[0];
+        useri = useri.replace('\n', '');
+        if (useri.slice(0,1) == ' ') {
+          useri = useri.slice(1);
+        }
+        var charstoadd = parts[1].split(',');
+            
+        lf_list[useri] = charstoadd;
+      }       
+      msg.channel.send("Update complete!");      
     }
     
-    if(command == 'preloadpj') {
-      msg.reply("Soon!")
-    }
-  }
+//------------------------------------------------------------------------- END PRELOAD
+    
+  } //END BOT&OWNER COMMANDS
   
 //------------------------------------------------------------------------- END ADMIN COMMANDS
   
