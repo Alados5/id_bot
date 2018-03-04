@@ -50,16 +50,17 @@ function sendAllData(datatype) {
         database += id_list[key]['link'] + ';; \n';
         limitmsg += 1;
         if(limitmsg >= 10) {
-          messages.push(database);
+          messages.push(database.slice(0,-2));
           database = '';
           limitmsg = 0;
         }
       }
     }
+    messages.push(database.slice(0,-2));
     return messages
   }
   else if (datatype == 'PJ') {
-    return 0
+    return ['a','b']
   }
 }
 
@@ -84,15 +85,17 @@ client.on('message', msg => {
     
 //------------------------------------------------------------------------- START ALLDATA    
     if(command == 'alldata') {
-      if(args[0] == 'id') {
+      if(args[0].toLowerCase() == 'id') {
         var alldataids = sendAllData('ID');
         for(m=0; m<alldataids.length; m++) {
          msg.channel.send(alldataids[m])
         }
       }
-      else if(args[0] == 'pj') {
+      else if(args[0].toLowerCase() == 'pj') {
         var alldatapjs = sendAllData('PJ');
-        msg.channel.send(alldatapjs)
+        for(m=0; m<alldatapjs.length; m++) {
+         msg.channel.send(alldatapjs[m])
+        }
       }
       else msg.channel.send("You didn't specify a data type")
     }
