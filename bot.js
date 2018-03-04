@@ -56,7 +56,7 @@ function sendAllData(datatype) {
         }
       }
     }
-    messages.push(database.slice(0,-2));
+    if (database != '') messages.push(database.slice(0,-2));
     return messages
   }
   else if (datatype == 'PJ') {
@@ -72,7 +72,7 @@ function sendAllData(datatype) {
         }
       }
     }    
-    messages.push(database.slice(0,-2));
+    if (database != '') messages.push(database.slice(0,-2));
     return messages
   }
 }
@@ -192,9 +192,7 @@ client.on('message', msg => {
     
 //------------------------------------------------------------------------- END DELETEUSER  
     
-  }
-
-//------------------------------------------------------------------------- END ADMIN COMMANDS
+  } // END EXCLUSIVE OWNER COMMANDS
     
 //------------------------------------------------------------------------- START SPAM    
 
@@ -224,9 +222,19 @@ client.on('message', msg => {
         msg.reply('Action Invalid')
       }
     }
-  }
     
-//------------------------------------------------------------------------- END SPAM
+//------------------------------------------------------------------------- END SPAM 
+    
+    if(command == 'preloadid') {
+      msg.reply("Soon!")
+    }
+    
+    if(command == 'preloadpj') {
+      msg.reply("Soon!")
+    }
+  }
+  
+//------------------------------------------------------------------------- END ADMIN COMMANDS
   
 //------------------------------------------------------------------------- START BOT (SELF) COMMANDS  
 
@@ -240,6 +248,7 @@ client.on('message', msg => {
   }
   
 //------------------------------------------------------------------------- END BOT (SELF) COMMANDS 
+
   
 //------------------------------------------------------------------------- START USER COMMANDS  
   
