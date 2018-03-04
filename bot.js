@@ -60,7 +60,20 @@ function sendAllData(datatype) {
     return messages
   }
   else if (datatype == 'PJ') {
-    return ['a','b']
+    for (var key in lf_list) {
+      if (lf_list.hasOwnProperty(key)) {
+        database += key + ' ; ';
+        database += lf_list[key] + ';; \n';
+        limitmsg += 1;
+        if(limitmsg >= 10) {
+          messages.push(database.slice(0,-2));
+          database = '';
+          limitmsg = 0;
+        }
+      }
+    }    
+    messages.push(database.slice(0,-2));
+    return messages
   }
 }
 
@@ -100,22 +113,15 @@ client.on('message', msg => {
       else msg.channel.send("You didn't specify a data type")
     }
     
-    if(msg.content == '!AllDataPJ') {
-      var database = '';
-      var limitmsg = 0;
-      for (var key in lf_list) {
-        if (lf_list.hasOwnProperty(key)) {
-          database += key + ' ; ';
-          database += lf_list[key] + ';; \n';
-          limitmsg += 1;
-          if(limitmsg >= 10) {
-            msg.channel.send(database)
-            database = '';
-            limitmsg = 0;
-          }
-        }
+    if(command == 'autodata') {
+      var alldataids = sendAllData('ID');
+      var alldatapjs = sendAllData('PJ');
+      for(mi=0; mi<alldataids.length; mi++) {
+        msg.channel.send("!PreloadID " + alldataids[mi])
       }
-      msg.channel.send(database)
+      for(mj=0; mj<alldatapjs.length; mj++) {
+        msg.channel.send("!PreloadPJ " + alldatapjs[mj])
+      }
     }
     
 //------------------------------------------------------------------------- END ALLDATA    
