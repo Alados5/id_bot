@@ -180,6 +180,7 @@ client.on('message', msg => {
       msg.reply("Preloading ID data"); 
       
       var bulkdata = msg.content.slice(11);
+      if (bulkdata.slice(-2) == ';;') bulkdata = bulkdata.slice(0,-2);
       var lines = bulkdata.split(';;');
       
       for(j=0; j<lines.length; j++) {
@@ -200,6 +201,7 @@ client.on('message', msg => {
       msg.reply("Preloading PJ data");  
       
       var bulkdata = msg.content.slice(11);
+      if (bulkdata.slice(-2) == ';;') bulkdata = bulkdata.slice(0,-2); 
       var lines = bulkdata.split(';;');
       
       for(j=0; j<lines.length; j++) {
