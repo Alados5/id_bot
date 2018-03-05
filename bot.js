@@ -584,7 +584,7 @@ client.on('message', msg => {
     else {
       for(i=0;i<stored.length;i++) {
         if(lf_list[useri].indexOf(stored[i]) == -1) {
-          lf_list[useri].push(stored[i])
+          lf_list[useri].push(stored[i]);
         }
       }
       msg.reply("Updated your list with: " + correct + ' captains!')
