@@ -403,7 +403,7 @@ client.on('message', msg => {
       args[1] = "Global";
     }
     else {
-      return msg.reply('Specify Japan or Global after your ID')
+      return msg.reply('Specify Japan or Global after your ID. Remember to use simple spaces, not commas')
     }
     //if(args[1] !== "Japan" && args[1] !== "Global") return msg.reply('Specify Japan or Global after your ID')
 
@@ -446,7 +446,7 @@ client.on('message', msg => {
       args[1] = "Global";
     }
     else {
-      return msg.reply('Especifica Japan o Global después de tu ID')
+      return msg.reply('Especifica Japan o Global después de tu ID. Recuerda separar con espacios, sin comas')
     }
     //if(args[1] !== "Japan" && args[1] !== "Global") return msg.reply('Specify Japan or Global after your ID')
 
