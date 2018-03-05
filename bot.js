@@ -576,9 +576,21 @@ client.on('message', msg => {
         correct += 1;
       }
     }
-    lf_list[msg.author.username] = stored;
+    var useri = msg.author.username;
+    if(!lf_list[useri]) {
+      lf_list[useri] = stored;
+      msg.reply("Created a list of: " + correct + ' captains!')
+    }
+    else {
+      for(i=0;i<stored.length;i++) {
+        if(lf_list[useri].indexOf(stored[i]) == -1) {
+          lf_list[useri].push(stored[i])
+        }
+      }
+      msg.reply("Updated your list with: " + correct + ' captains!')
+    }
     
-    msg.reply(correct + ' OK!')
+    
     
   }
   
