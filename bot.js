@@ -10,6 +10,9 @@ const prefix = '!';
 const ownerID = "284104569586450434";
 const botID = "402991299776741397";
 
+const dbchanID = "407317321145778177";       //Channel: ID Database
+const prelchanID = "404763699924959233";     //Channel: ID Preloads
+
 const JPdic = ['japan', 'japon', 'japón', 'jp', 'japonesa', 'japo', 'jap', 'jpn'];
 const GLdic = ['global', 'gb', 'gbl', 'glb', 'globest'];
 
@@ -90,7 +93,7 @@ client.on('message', msg => {
   
   //Checks if the author is me
   if(msg.author.id == ownerID) {
-    if(msg.content == '!MyBot') {
+    if(command == 'mybot') {
       msg.reply('What is thy bidding, my Master?')
     }
     
@@ -113,9 +116,9 @@ client.on('message', msg => {
     
 //------------------------------------------------------------------------- END ALLDATA    
     
-//------------------------------------------------------------------------- START DELETEUSER    
+//------------------------------------------------------------------------- START DELETE 
 
-    if(command == 'deleteuser') {    
+    if(command == 'delete') {    
       var deluser = msg.content.slice(12);
       if (deluser == '') return msg.reply("Specify a user")
       
@@ -126,41 +129,42 @@ client.on('message', msg => {
 
     }
     
-//------------------------------------------------------------------------- END DELETEUSER  
+//------------------------------------------------------------------------- END DELETE
     
-  } // END EXCLUSIVE OWNER COMMANDS
-    
-//------------------------------------------------------------------------- START SPAM    
-
+  } // END ADMIN COMMANDS
+  
+//------------------------------------------------------------------------- START BOT&OWNER COMMANDS
   if(msg.author.id == botID || msg.author.id == ownerID) {
-    if(command == 'spam') {    
-      var action = msg.content.slice(6);
-      if (action == '') return msg.reply("Action Required")
-      else if (action == '1') {
-        msg.reply('You activated the Bot Sleep Prevention Procedure')
-        myInterval = setInterval (function () {
-          var now = new Date();
-          var hora = now.getHours();
-          hora += 1;
-          if (hora == 24) hora = 0;
-          if (hora<10) hora = '0' + hora;
-          var mins = now.getMinutes();
-          if (mins<10) mins = '0' + mins;
-          var tnow = hora + ':' + mins; 
-          msg.channel.send("!! - " + tnow + " - Remembering Data...")
-        }, 600000); //every 10 minutes (10*60*1000)
-      }
-      else if (action == '0') {
-        msg.reply('You deactivated the Bot Sleep Prevention Procedure')
-        clearInterval(myInterval);
-      }
-      else {
-        msg.reply('Action Invalid')
-      }
-    }
     
+//------------------------------------------------------------------------- START SPAM 
+//    if(command == 'spam') {    
+//      var action = msg.content.slice(6);
+//      if (action == '') return msg.reply("Action Required")
+//      else if (action == '1') {
+//        msg.reply('You activated the Bot Sleep Prevention Procedure')
+//        myInterval = setInterval (function () {
+//          var now = new Date();
+//          var hora = now.getHours();
+//          hora += 1;
+//          if (hora == 24) hora = 0;
+//          if (hora<10) hora = '0' + hora;
+//          var mins = now.getMinutes();
+//          if (mins<10) mins = '0' + mins;
+//          var tnow = hora + ':' + mins; 
+//          msg.channel.send("!! - " + tnow + " - Remembering Data...")
+//        }, 600000); //every 10 minutes (10*60*1000)
+//      }
+//      else if (action == '0') {
+//        msg.reply('You deactivated the Bot Sleep Prevention Procedure')
+//        clearInterval(myInterval);
+//      }
+//      else {
+//        msg.reply('Action Invalid')
+//      }
+//    } 
 //------------------------------------------------------------------------- END SPAM 
-    
+
+  
 //------------------------------------------------------------------------- START AUTODATA 
     
     if(command == 'autodata') {
@@ -224,23 +228,20 @@ client.on('message', msg => {
 //------------------------------------------------------------------------- END ADMIN COMMANDS
   
 //------------------------------------------------------------------------- START BOT (SELF) COMMANDS  
-
-  if(msg.author.id == botID && msg.content.slice(1,2) == '!') {
-    rem += 1;
-    if (rem >= 12) { //12 = 2 hours at 10min/msg
-      msg.channel.send("!spam 0")
-      msg.channel.send("!autodata")
-      msg.channel.send("!spam 1")
-      rem = 0;
-    }
-  }
-  
+//  if(msg.author.id == botID && msg.content.slice(1,2) == '!') {
+//    rem += 1;
+//    if (rem >= 12) { //12 = 2 hours at 10min/msg
+//      msg.channel.send("!spam 0")
+//      msg.channel.send("!autodata")
+//      msg.channel.send("!spam 1")
+//      rem = 0;
+//    }
+//  }
 //------------------------------------------------------------------------- END BOT (SELF) COMMANDS 
   
 //------------------------------------------------------------------------- START HELP
   
   if(command == 'help') {
-    //message.reply('text');
     msg.channel.send('Commands (EN): !save, !show, !ihave, !lookingfor');
     msg.channel.send({embed: {
       color: 16757760,
@@ -357,9 +358,22 @@ client.on('message', msg => {
 //------------------------------------------------------------------------- START SAVE
   
   
-  if(command == 'save') {
-    if(isNaN(args[0]) == true) return msg.reply('Enter your ID number after !save')
-    else if(args[0].length !== 9) return msg.reply('Your ID must have 9 digits, no spaces nor commas')
+  if(command == 'save' || command == 'guarda') {
+    if(command == 'save') {
+      var invalidid1 = 'Enter your ID number after !save';
+      var invalidid2 = 'Your ID must have 9 digits, no spaces nor commas';
+      var invalidserver = 'Specify Japan or Global after your ID. Remember to use simple spaces, not commas';
+      var validsavemsg = ' has saved his ID/Server: ';
+    }
+    else {
+      var invalidid1 = 'Pon tu ID después de !guarda. 9 números seguidos';
+      var invalidid2 = 'Tu ID debe tener 9 dígitos, sin espacios ni comas';
+      var invalidserver = 'Especifica Japan o Global después de tu ID. Recuerda separar con espacios, sin comas';
+      var validsavemsg = ' ha guardado su ID/Servidor: ';
+    }
+    
+    if(isNaN(args[0]) == true) return msg.reply(invalidid1)
+    else if(args[0].length !== 9) return msg.reply(invalidid2)
     
     if (JPdic.indexOf(args[1].toLowerCase()) >= 0) {
       args[1] = "Japan";
@@ -368,9 +382,8 @@ client.on('message', msg => {
       args[1] = "Global";
     }
     else {
-      return msg.reply('Specify Japan or Global after your ID. Remember to use simple spaces, not commas')
+      return msg.reply(invalidserver)
     }
-    //if(args[1] !== "Japan" && args[1] !== "Global") return msg.reply('Specify Japan or Global after your ID')
 
     var data = args.slice(2).toString();
     data = data.replace(/,/g, " ");
@@ -395,69 +408,39 @@ client.on('message', msg => {
     content.link = addlink;
     id_list[msg.author.username] = content
     
-    msg.channel.send(msg.author.username+" has saved his "+args[1]+" ID: "+args[0])
-    //msg.channel.send("It works for now")
+    msg.channel.send(msg.author.username + validsavemsg + args[0] + " / " + args[1])
   }
-
-  
-  if(command == 'guarda') {
-    if(isNaN(args[0]) == true) return msg.reply('Pon tu ID después de !guarda. 9 números seguidos')
-    else if(args[0].length !== 9) return msg.reply('Tu ID debe tener 9 dígitos, sin espacios ni comas')
-    
-    if (JPdic.indexOf(args[1].toLowerCase()) >= 0) {
-      args[1] = "Japan";
-    }
-    else if (GLdic.indexOf(args[1].toLowerCase()) >= 0) {
-      args[1] = "Global";
-    }
-    else {
-      return msg.reply('Especifica Japan o Global después de tu ID. Recuerda separar con espacios, sin comas')
-    }
-    //if(args[1] !== "Japan" && args[1] !== "Global") return msg.reply('Specify Japan or Global after your ID')
-
-    var data = args.slice(2).toString();
-    data = data.replace(/,/g, " ");
-    data = data.replace(/  /g, ", ");
-    var datalist = data.split("http");
-    
-    if(datalist.length == 1) {
-      var addinfo = datalist[0];
-      var addlink = ''
-    }
-    else {
-      var addinfo = datalist[0];
-      var addlink = 'http'+datalist[1];
-    }
-
-    if(addinfo == '') addinfo = 'N/A'
-    
-    var content = {};
-    content.id = args[0];
-    content.server = args[1];
-    content.info = addinfo;
-    content.link = addlink;
-    id_list[msg.author.username] = content
-    
-    msg.channel.send(msg.author.username+" ha guardado su ID ("+args[0]+") del servidor: "+args[1])
-    //msg.channel.send("It works for now")
-  }  
-  
   
 //------------------------------------------------------------------------- END SAVE
   
 //------------------------------------------------------------------------- START SHOW
   
-  if(command == 'show') {
-    if (msg.mentions.members.first() == undefined) return msg.reply("Mention a user (with @)")
+  if(command == 'show' || command == 'muestra') {
+    if(command == 'show') {
+      var nomention = 'Mention a user (with @)';
+      var invalidmention = 'Mention a valid user';
+      var noregisteredmsg = 'This user is not registered';
+      var footertxt = "I'm a bot created by Alados5  |  I should be online 24/7";
+      var embedtxt = ["User Name (in Discord)", "Server", "Additional info"];
+    }
+    else {
+      var nomention = 'Menciona a un usuario (con @)';
+      var invalidmention = 'Menciona a un usuario válido';
+      var noregisteredmsg = 'Este usuario no está registrado';
+      var footertxt = "Soy un bot creado por Alados5  |  Debería funcionar 24/7";
+      var embedtxt = ["Nombre (en Discord)", "Servidor", "Info adicional"];
+    }
+    
+    if (msg.mentions.members.first() == undefined) return msg.reply(nomention)
     const wanteduser = msg.mentions.members.first().user.username;
-    if (!wanteduser) return msg.reply('Mention a user')
+    if (!wanteduser) return msg.reply(invalidmention)
     const allinfo = id_list[wanteduser];
-    if (allinfo == undefined) return msg.reply('This user is not registered')
+    if (allinfo == undefined) return msg.reply(noregisteredmsg)
 
     msg.channel.send({embed: {
       color: 16757760,
       footer: {
-        text: "I'm a bot created by Alados5  |  I should be online 24/7",
+        text: footertxt,
         icon_url: client.user.avatarURL
       },
       image: {
@@ -465,11 +448,11 @@ client.on('message', msg => {
       },
       fields: [
         {
-          name: "User Name (in Discord)",
+          name: embedtxt[0],
           value: wanteduser
         },
         {
-          name: "Server",
+          name: embedtxt[1],
           value: allinfo.server
         },
         {
@@ -477,51 +460,13 @@ client.on('message', msg => {
           value: allinfo.id
         },
         {
-          name: "Additional info",
+          name: embedtxt[2],
           value: allinfo.info
         }
       ]
     }})
   }
 
-  if(command == 'muestra') {
-    if (msg.mentions.members.first() == undefined) return msg.reply("Menciona a un usuario (con @)")
-    const wanteduser = msg.mentions.members.first().user.username;
-    if (!wanteduser) return msg.reply('Menciona a un usuario')
-    const allinfo = id_list[wanteduser];
-    if (allinfo == undefined) return msg.reply('Este usuario no está registrado')
-
-    msg.channel.send({embed: {
-      color: 16757760,
-      footer: {
-        text: "Soy un bot creado por Alados5  |  Debería funcionar 24/7",
-        icon_url: client.user.avatarURL
-      },
-      image: {
-        url: allinfo.link
-      },
-      fields: [
-        {
-          name: "Nombre (en Discord)",
-          value: wanteduser
-        },
-        {
-          name: "Servidor",
-          value: allinfo.server
-        },
-        {
-          name: "ID",
-          value: allinfo.id
-        },
-        {
-          name: "Info adicional",
-          value: allinfo.info
-        }
-      ]
-    }})
-  }  
-
-  
 //------------------------------------------------------------------------- END SHOW
 
 //------------------------------------------------------------------------- START IHAVE
@@ -555,8 +500,6 @@ client.on('message', msg => {
       msg.reply("Updated your list with: " + correct + ' captains!')
     }
     
-    
-    
   }
   
 //------------------------------------------------------------------------- END IHAVE    
@@ -567,15 +510,18 @@ client.on('message', msg => {
     if(command == 'lookingfor') {
       var chartl = msg.content.slice(12);
       var incmsg = 'No registered users have ';
+      var nochar = 'Invalid Character Name!';
       var cormsg = 'These users have ';
     }
     else {
       var chartl = msg.content.slice(8);
       var incmsg = 'Ningún usuario registrado tiene a ';
+      var nochar = 'Nombre de Personaje No Válido!';
       var cormsg = 'Estos usuarios tienen a ';
     }
     var tolook = chartl.toLowerCase();
     var lookid = findnum(tolook, dpj);
+    if (lookid == '-1') return msg.reply(nochar) 
     var users = '';
     for(var key in lf_list) {
       if (lf_list.hasOwnProperty(key)) {
@@ -614,11 +560,9 @@ client.on('message', msg => {
 //------------------------------------------------------------------------- START BACKUP  
   
   if (command == 'backup') {
-    var dbchanID = "407317321145778177"; //Channel: ID Database
-    var prelchanID = "404763699924959233"; //Channel: ID Preloads
     let dbchan = client.channels.find("id", dbchanID);
     if(dbchan) {
-        dbchan.fetchMessages({ limit: 10 })
+        dbchan.fetchMessages({ limit: 20 })
           .then(messages => {
 
             let prelchan = client.channels.find("id", prelchanID);
