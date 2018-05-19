@@ -12,8 +12,6 @@ const botID = "402991299776741397";
 const channelID = "407317321145778177";
 const dbchannel = client.channels.find("id", channelID);
 
-var savedaccs = require("./saved.json");
-
 const JPdic = ['japan', 'japon', 'japón', 'jp', 'japonesa', 'japo', 'jap', 'jpn'];
 const GLdic = ['global', 'gb', 'gbl', 'glb', 'globest'];
 
