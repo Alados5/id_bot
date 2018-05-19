@@ -622,19 +622,31 @@ client.on('message', msg => {
   
 //------------------------------------------------------------------------- END NAMES
   
+//------------------------------------------------------------------------- START BACKUP  
+  
   if (command == 'backup') {
     var channelID = "407317321145778177"; //Channel: ID Database
     let dbchan = client.channels.find("id", channelID);
     if(dbchan) {
-        dbchan.fetchMessage('420714783659130890') //First message
-          .then(message => msg.channel.send(message.content))
+        dbchan.fetchMessages({ limit: 10 })
+          .then(messages => {
+            var lmsg = messages.array()
+            msg.channel.send(lmsg[0])
+          })
           .catch(msg.channel.send("Done!"));
+      
+      channel.fetchMessages({ limit: 10 })
+  .then(messages => console.log(`Received ${messages.size} messages`))
+  .catch(console.error);
+      
     }
     else {
         msg.channel.send("Hey! I can't do that!");
     }
 
   }
+  
+//------------------------------------------------------------------------- END BACKUP  
   
 });
 
