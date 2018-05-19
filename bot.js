@@ -626,8 +626,8 @@ client.on('message', msg => {
   
   if (command == 'load2') {
     msg.channel.fetchMessage('447478379390959617')
-      .then(message => msg.channel.send("!PreloadID" + message.content))
-      .catch(msg.channel.send("Error!"));
+      .then(message => msg.channel.send("!PreloadID " + message.content))
+      .catch(msg.channel.send("Done!"));
   }
   
 });
