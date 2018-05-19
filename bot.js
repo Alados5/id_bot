@@ -584,7 +584,7 @@ client.on('message', msg => {
   if (command == 'backup') {
     let dbchan = client.channels.find("id", dbchanID);
     if(dbchan) {
-        dbchan.fetchMessages({ limit: 20 })
+        dbchan.fetchMessages({ limit: 100 })
           .then(messages => {
 
             let prelchan = client.channels.find("id", prelchanID);
