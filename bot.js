@@ -631,7 +631,9 @@ client.on('message', msg => {
         dbchan.fetchMessages({ limit: 10 })
           .then(messages => {
             var lmsg = messages.array()
-            msg.channel.send(lmsg[0])
+            for(m = 0; m < lmsg.length(); m++) {
+              msg.channel.send(lmsg[m])
+            }
           })
           .catch(msg.channel.send("Done!"));
     }
