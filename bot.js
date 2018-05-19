@@ -9,6 +9,8 @@ const prefix = '!';
 
 const ownerID = "284104569586450434";
 const botID = "402991299776741397";
+const channelID = "407317321145778177";
+const dbchannel = client.channels.find("id", channelID);
 
 var savedaccs = require("./saved.json");
 
@@ -624,9 +626,9 @@ client.on('message', msg => {
   
 //------------------------------------------------------------------------- END NAMES
   
-  if (command == 'load2') {
-    msg.channel.fetchMessage('447478379390959617')
-      .then(message => msg.channel.send("!PreloadID " + message.content))
+  if (command == 'backup') {
+    dbchannel.fetchMessage('420714783659130890')
+      .then(message => msg.channel.send(message.content))
       .catch(msg.channel.send("Done!"));
   }
   
