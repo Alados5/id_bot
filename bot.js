@@ -9,8 +9,6 @@ const prefix = '!';
 
 const ownerID = "284104569586450434";
 const botID = "402991299776741397";
-const channelID = "407317321145778177";
-const dbchannel = client.channels.find("id", channelID);
 
 const JPdic = ['japan', 'japon', 'japón', 'jp', 'japonesa', 'japo', 'jap', 'jpn'];
 const GLdic = ['global', 'gb', 'gbl', 'glb', 'globest'];
@@ -625,9 +623,18 @@ client.on('message', msg => {
 //------------------------------------------------------------------------- END NAMES
   
   if (command == 'backup') {
-    dbchannel.fetchMessage('420714783659130890')
-      .then(message => msg.channel.send(message.content))
-      .catch(msg.channel.send("Done!"));
+    var channelID = "404763699924959233"; //Channel: ID Preloads
+    let dbchan = client.channels.find("id", channelID);
+    if(dbchan) {
+        dbchan.send("Hey!");
+    }
+    else {
+        msg.channel.send("Heyheyhey!");
+    }
+    
+    //dbchannel.fetchMessage('447478379390959617')
+    //  .then(message => msg.channel.send("!PreloadID " + message.content))
+    //  .catch(msg.channel.send("Done!"));
   }
   
 });
