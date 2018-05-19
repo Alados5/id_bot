@@ -626,15 +626,14 @@ client.on('message', msg => {
     var channelID = "404763699924959233"; //Channel: ID Preloads
     let dbchan = client.channels.find("id", channelID);
     if(dbchan) {
-        dbchan.send("Hey!");
+        dbchan.fetchMessage('447478379390959617') //MyDBMessage
+          .then(message => msg.channel.send("!PreloadID " + message.content))
+          .catch(msg.channel.send("Done!"));
     }
     else {
         msg.channel.send("Heyheyhey!");
     }
-    
-    //dbchannel.fetchMessage('447478379390959617')
-    //  .then(message => msg.channel.send("!PreloadID " + message.content))
-    //  .catch(msg.channel.send("Done!"));
+
   }
   
 });
