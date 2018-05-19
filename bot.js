@@ -632,7 +632,7 @@ client.on('message', msg => {
           .then(messages => {
             var lmsg = messages.array()
             for(m = 0; m < lmsg.length; m++) {
-              msg.channel.send(lmsg[m])
+              msg.channel.send(lmsg[m].content)
             }
           })
           .catch(msg.channel.send("Done!"));
