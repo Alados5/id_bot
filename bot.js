@@ -625,20 +625,29 @@ client.on('message', msg => {
 //------------------------------------------------------------------------- START BACKUP  
   
   if (command == 'backup') {
-    var channelID = "407317321145778177"; //Channel: ID Database
-    let dbchan = client.channels.find("id", channelID);
+    var dbchanID = "407317321145778177"; //Channel: ID Database
+    var prelchanID = "404763699924959233"; //Channel: ID Preloads
+    let dbchan = client.channels.find("id", dbchanID);
     if(dbchan) {
         dbchan.fetchMessages({ limit: 10 })
           .then(messages => {
-            var lmsg = messages.array()
-            for(m = 0; m < lmsg.length; m++) {
-              msg.channel.send(lmsg[m].content)
+
+            let prelchan = client.channels.find("id", prelchanID);
+            if(prelchan) {
+              var lmsg = messages.array()
+              for(m = 0; m < lmsg.length; m++) {
+                prelchan.send(lmsg[m].content)
+              }
             }
+            else {
+              msg.channel.send("Error in Backup Channel");
+            }
+          
           })
           .catch(msg.channel.send("Done!"));
     }
     else {
-        msg.channel.send("Hey! I can't do that!");
+        msg.channel.send("Error in Saves Channel");
     }
 
   }
