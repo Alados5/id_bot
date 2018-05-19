@@ -623,15 +623,15 @@ client.on('message', msg => {
 //------------------------------------------------------------------------- END NAMES
   
   if (command == 'backup') {
-    var channelID = "404763699924959233"; //Channel: ID Preloads
+    var channelID = "407317321145778177"; //Channel: ID Database
     let dbchan = client.channels.find("id", channelID);
     if(dbchan) {
-        dbchan.fetchMessage('447478379390959617') //MyDBMessage
-          .then(message => msg.channel.send("!PreloadID " + message.content))
+        dbchan.fetchMessage('420714783659130890') //First message
+          .then(message => msg.channel.send(message.content))
           .catch(msg.channel.send("Done!"));
     }
     else {
-        msg.channel.send("Heyheyhey!");
+        msg.channel.send("Hey! I can't do that!");
     }
 
   }
