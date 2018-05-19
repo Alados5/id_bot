@@ -563,8 +563,18 @@ client.on('message', msg => {
   
 //------------------------------------------------------------------------- START LOOKINGFOR
   
-  if(command == 'lookingfor') {
-    var tolook = msg.content.slice(12).toLowerCase();
+  if(command == 'lookingfor' || command == 'buscoa') {
+    if(command == 'lookingfor') {
+      var chartl = msg.content.slice(12);
+      var incmsg = 'No registered users have ';
+      var cormsg = 'These users have ';
+    }
+    else {
+      var chartl = msg.content.slice(8);
+      var incmsg = 'Ningún usuario registrado tiene a ';
+      var cormsg = 'Estos usuarios tienen a ';
+    }
+    var tolook = chartl.toLowerCase();
     var lookid = findnum(tolook, dpj);
     var users = '';
     for(var key in lf_list) {
@@ -579,30 +589,9 @@ client.on('message', msg => {
         }
       }      
     }
-    if(users == '') return msg.reply('No registered users have ' + msg.content.slice(12))
+    if(users == '') return msg.reply(incmsg + chartl)
     
-    msg.channel.send('These users have ' + msg.content.slice(12) + ': \n' + users.slice(0,-2))
-  }
-  
-  if(command == 'buscoa') {
-    var tolook = msg.content.slice(8).toLowerCase();
-    var lookid = findnum(tolook, dpj);
-    var users = '';
-    for(var key in lf_list) {
-      if (lf_list.hasOwnProperty(key)) {
-        var user = key;
-        var idlist = lf_list[key];
-        for(id=0; id<idlist.length; id++) {
-          if(idlist[id] == lookid) {
-            users += user;
-            users += ', ';
-          }
-        }
-      }      
-    }
-    if(users == '') return msg.reply('Ningún usuario registrado tiene a ' + msg.content.slice(8))
-    
-    msg.channel.send('Estos usuarios tienen a ' + msg.content.slice(8) + ': \n' + users.slice(0,-2))
+    msg.channel.send(cormsg + chartl + ': \n' + users.slice(0,-2))
   }
   
 //------------------------------------------------------------------------- END LOOKINGFOR  
@@ -644,7 +633,7 @@ client.on('message', msg => {
             }
           
           })
-          .catch(msg.channel.send("Done!"));
+          .catch(msg.channel.send("Reloading data. Please wait a few seconds to retry!"));
     }
     else {
         msg.channel.send("Error in Saves Channel");
