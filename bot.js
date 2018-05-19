@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const fs = module.require("fs");
+//const fs = module.require("fs");
 
 var id_list = {};
 var lf_list = {};
@@ -624,13 +624,9 @@ client.on('message', msg => {
   
 //------------------------------------------------------------------------- END NAMES
   
-  if (command == 'save2') {
-    var savedata = {};
-    savedata[msg.author.username] = {id:'123456789', server:'japan'};
-    fs.writeFile("./saved.json", JSON.stringify(savedata, null, 4), err => {
-      if(err) throw err;
-      msg.channel.send("Done!");
-    });
+  if (command == 'load2') {
+    msg.channel.fetchMessage('447478379390959617')
+      .then(message => msg.channel.send("!PreloadID" + message.content))
   }
   
 });
