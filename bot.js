@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const fs = module.require("fs");
 
 var id_list = {};
 var lf_list = {};
@@ -7,10 +8,9 @@ var rem = 0;
 const prefix = '!';
 
 const ownerID = "284104569586450434";
-const charlieID = "389070076235481090";
-const fappingtonID = "391601707022549007";
-const joseluID = "210835574641262602";
 const botID = "402991299776741397";
+
+var savedaccs = require("./saved.json");
 
 const JPdic = ['japan', 'japon', 'japón', 'jp', 'japonesa', 'japo', 'jap', 'jpn'];
 const GLdic = ['global', 'gb', 'gbl', 'glb', 'globest'];
@@ -238,39 +238,6 @@ client.on('message', msg => {
   }
   
 //------------------------------------------------------------------------- END BOT (SELF) COMMANDS 
-
-  
-//------------------------------------------------------------------------- START USER COMMANDS  
-  
-  if(msg.author.id == charlieID) {
-    if (msg.content == '!QuienSoy') {
-      msg.reply("un grande, el que ha soportado mil menciones por minuto para que esto funcione, mil gracias! :D")
-    }
-    if (msg.content == '!Hey') {
-      msg.reply('¡Hey Charlie! ¿Quieres comprobar si aún tengo tu ID? ¡Gracias por todo!')
-    }
-  }
-  
-  if(msg.author.id == fappingtonID) {
-    if (msg.content == '!QuienSoy') {
-      msg.reply('un grande, el que ha ido probando el bot a cada hora para probar que se guardara. Gracias!')
-    }
-    if (msg.content == '!Hey') {
-      msg.reply('¡Hey Fappington! ¿Me has probado en los últimos 60 minutos? ¿He dejado de funcionar? ¡Gracias por ayudar!')
-    }
-  }
-                                              
-  if(msg.author.id == joseluID) {
-    if (msg.content == '!QuienSoy') {
-      msg.reply('el mejor youtuber de OPTC en español. Y un puto whale rager <3')
-    }
-    if (msg.content == '!Hey') {
-      msg.reply('¡Muy buenas, JoseLu! ¿Qué tal andamos? Tienes a Lucy, a Neptune... Y A CROCO 6+. No necesitas saber más!')
-    }
-  }
-    
-  
-//------------------------------------------------------------------------- END USER COMMANDS  
   
 //------------------------------------------------------------------------- START HELP
   
@@ -656,6 +623,15 @@ client.on('message', msg => {
   }  
   
 //------------------------------------------------------------------------- END NAMES
+  
+  if (command == 'save2') {
+    var savedata = {};
+    savedata[msg.author.username] = {id:'123456789', server:'japan'};
+    fs.writeFile("./saved.json", JSON.stringify(savedata, null, 4), err => {
+      if(err) throw err;
+      msg.channel.send("Done!");
+    });
+  }
   
 });
 
