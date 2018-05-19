@@ -634,11 +634,6 @@ client.on('message', msg => {
             msg.channel.send(lmsg[0])
           })
           .catch(msg.channel.send("Done!"));
-      
-      channel.fetchMessages({ limit: 10 })
-  .then(messages => console.log(`Received ${messages.size} messages`))
-  .catch(console.error);
-      
     }
     else {
         msg.channel.send("Hey! I can't do that!");
