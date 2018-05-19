@@ -1,128 +1,88 @@
 {
-  "0217":["217", "luffy gear 3", "luffy g3", "luffy gear 3rd"],
   "0218":["218", "zoro streaming wolf swords", "zoro sws"],
-  "0227":["227", "dracule mihawk", "mihawk raid", "raidhawk", "dexhawk", "mihawk dex"],
-  "0247":["247", "chopperman", "kawaii"],
-  "0249":["249", "monster chopper", "mc", "tony tony chopper post rampage", "chopper raid"],
-  "0251":["251", "marco the phoenix", "marco base", "marco psy"],
   "0261":["261", "whitebeard", "wb", "wb legend", "whitebeard legend", "edward newgate"],
-  "0312":["312", "killer", "massacre soldier killer", "killer qck", "killer rr", "killer v1"],
   "0367":["367", "dark king rayleigh", "rayleigh", "ray", "silvers rayleigh", "rayleigh legend", "ray 6*", "ray legend", "ray v1"],
   "0416":["416", "boa hancock", "boa hancock warlord of the sea", "boa hancock shichibukai", "boa hancock 6*", "boa 6*", "boa legend", "boa legend v1"],
   "0424":["424", "brook humming swordsman", "humming swordsman brook", "brook fn", "brook qck", "brook v1"],
   "0459":["459", "sengoku", "sengoku the buddha", "sengoku 6*", "sengoku legend"],
-  "0520":["520", "sw luffy", "luffy sw", "old sw luffy", "monkey d. luffy straw hat pirates attack"],
   "0530":["530", "sw shanks", "shanks sw", "shanks legend", "shanks 6*", "shanks black clad emperor"],
   "0562":["562", "sw ace", "ace sw", "ace legend", "ace 6*", "portgas d. ace black clad flame fist"],
   "0578":["578", "log luffy", "old log luffy", "luffy log", "monkey d. luffy voyage dream pirate king", "ll", "log luffy 6*", "log luffy legend"],
-  "0603":["603", "eneru raid", "enel raid", "eneru lightning incarnate 200000000 volt amaru"],
+  "0603":["603", "eneru raid", "enel raid", "eneru lightning incarnate 200,000,000 volt amaru"],
   "0649":["649", "marco legend", "marco qck", "marco 6*", "marco the phoenix whitebeard 1st div. commander"],
   "0669":["669", "sabo 6*", "sabo legend", "sabo legend v1", "sabo the revolutionary"],
   "0718":["718", "inthawk", "mihawk legend", "mihawk int", "mihawk 6*", "legend mihawk", "hawk eyes mihawk world's strongest swordsman"],
+  "0719":["719", "sir crocodile logia warlord of the sea", "crocodile legend 5*", "thejoselu8 nightmare", "tiioo"],
   "0720":["720", "crocodile legend", "croco legend", "croc legend", "croco 6*", "6* croc", "crocodile dex", "sir crocodile logia ex-warlord of the sea"],
   "0748":["748", "rob lucci cp9's strongest", "rob lucci", "lucci", "lucci 6*", "lucci legend", "lucci str", "lucci v1"],
   "0870":["870", "heavenly yaksha donquixote doflamingo", "doffy 6*", "doflamingo v1", "doffy legend v1", "doffy qck"],
-  "0912":["912", "sanji chef of love", "3d2y sanji", "sanji dex", "sanji 3d2y", "training sanji", "sanji entrenamiento"],
-  "0935":["935", "knight of the sea jinbe", "jinbe legend", "jinbe int", "jinbe esperando 6+", "jinbe 6*"], 
-  "0995":["995", "violet", "violet donquixote pirates", "violet v1", "violet rr", "violet psy"],
-  "0999":["999", "diamante", "diamante donquixote pirates", "diamante v1", "diamante str", "diamange rr v1"],
+  "0935":["935", "knight of the sea jinbe", "jinbe legend", "jinbe int", "jinbe now with 6+", "jinbe 6*"], 
   "1001":["1001", "corazon", "cora-san", "cora", "corazón", "corazon legend", "cora legend", "corazon 6*", "cora 6*"],
   "1035":["1035", "bartolomeo", "barto", "barto str", "barto legend", "bartolomeo legend", "barto 6*", "bartolomeo 6*"],
   "1045":["1045", "law legend", "law 6*", "law psy", "trafalgar law warlord of the sea", "law gamma knife", "law legend v1"],
   "1085":["1085", "fujitora", "fuji", "issho", "fuji v1", "fuji legend", "fujitora legend", "fujitora 6*", "fuji 6*", "fuji v1"],
-  "1115":["1115", "loyal luffy", "luffy loyal", "new sw luffy", "monkey d. luffy a pirate who lives by his code"],
   "1121":["1121", "new log luffy", "luffy log new", "monkey d. luffy a vow in the great age of pirates - pirate king", "ll2", "new ll"],
   "1123":["1123", "cavendish", "cavendish legend", "cavendish 6*", "white knight cavendish"],
-  "1163":["1163", "tesoro", "gild tesoro", "gild. tesoro", "tesoro raid", "gild. tesoro gold ship casino king"],
-  "1167":["1167", "baccarat", "baccarat gran tesoro concierge"],
-  "1186":["1186", "haruta", "haruta gale small swordsman", "haruta int", "haruta rr", "haruta v1"],
   "1192":["1192", "aokiji legend", "kuzan", "aokiji 6*", "legend aokiji"],
   "1240":["1240", "kizaru legend", "borsalino", "kizaru 6*", "legend kizaru"],
   "1268":["1268", "6*bb", "bb 6*", "bb legend", "blackbeard legend", "leg bb", "blackbeard captain of the blackbeard pirates"],
-  "1276":["1276", "shiliew", "shiryu", "shiryu of the rain", "shiliew rr", "shiryu rr", "shiliew v1", "shiryu v1"],
   "1314":["1314", "akainu legend", "sakazuki", "akainu 6*", "legend akainu", "absolute justice"],
   "1316":["1316", "coby rr", "coby hq", "coby student of the hero of the navy navy hq master chief petty officer", "coby antiheal"],
   "1362":["1362", "zoro legend", "zoro 6*", "ts zoro", "roronoa zoro reunion of the straw hat pirates"],
-  
-
-  "1391":["1381", "buggy legend", "legend buggy", "baggy", "buggy 6*", "captain buggy"],
-  
-  "1404":["1404", "ts luffy", "luffy ts", "luffy legend v2", "luffy 6* v2", "luffy legend qck", "tsl"],
-  
-  "1413":["1413", "wb+", "wb 6+", "whitebeard 6*+", "wb 6*+", "whitebeard legend plus", "whitebeard four emperors"],
-  
+  "1391":["1391", "buggy legend", "legend buggy", "baggy", "buggy 6*", "captain buggy", "buggy the clown", "buggy d. clown"],
+  "1404":["1404", "ts luffy", "luffy ts", "luffy legend v2", "luffy 6* v2", "luffy legend qck", "tsl", "monkey d. luffy reunion of the straw hat pirates"],
+  "1413":["1413", "wb+", "wb 6+", "whitebeard 6*+", "wb 6*+", "whitebeard legend plus", "whitebeard four emperors", "yonko whitebeard"],
   "1434":["1434", "hody jones", "hody legend", "hody jones legend", "hody 6*", "6* hody", "hody jones the ghost of fishman district"],
-  
-  "1445":["1445", "boa+", "boa hancock 6+", "boa 6+", "boa 6*+", "hancock 6+", "hancock 6*+", "boa hancock snake princess", "boa v1 6+"],
-  
+  "1445":["1445", "boa+", "hancock+", "boa hancock 6+", "boa 6+", "boa 6*+", "hancock 6+", "hancock 6*+", "boa hancock snake princess", "boa v1 6+", "boa qck 6+"],
   "1473":["1473", "shirahoshi", "shirahoshi legend", "shirahoshi 6*", "shirahoshi-hime ryugu kingdom princess", "poseidon"],
-  "1475":["1475", "neptune", "neptune ryugu kingdom king", "exp", "king neptune", "jamon"],
- 
-  "1492":["1492", "sabo 6*+", "sabo 6+", "sabo legend plus", "sabo+", "sabo v1 6+"],
-
-  "1518":["1518", "bellamy raid","bellamy qck"],
-  
+  "1475":["1475", "neptune", "neptune rr", "neptune str", "neptune ryugu kingdom king", "king neptune", "jamon"],
+  "1492":["1492", "sabo 6*+", "sabo 6+", "sabo legend plus", "sabo+", "sabo v1 6+", "sabo true power of the mera mera no mi"],
   "1532":["1532", "god usopp", "usopp legend", "usopp 6*"],
-  
-  "1543":["1543", "captain usopp", "usopp 6+", "usopp 6*+", "captain usopp usopp's great manly adventure chapter ii"],
-  
+  "1543":["1543", "captain usopp", "usopp 6+", "usopp 6*+", "usopp+", "captain usopp usopp's great manly adventure chapter ii"],
   "1571":["1571", "inuarashi", "inu", "inu legend", "dog mink", "not dogstorm", "king of the day inuarashi", "inuarashi legend", "inuarashi 6*", "inu 6*", "inu str"],
-  
   "1588":["1588", "sanji legend", "sanji 6*", "vinsmoke sanji", "germa sanji", "sanji germa kingdom prince", "sanji zou", "sanji action"],
-  
   "1593":["1593", "g4", "gear 4", "gear 4th", "monkey d. luffy gear 4th - boundman", "g4 legend", "tsl 6+", "luffy 6+", "luffy 6*+"],
-  
   "1610":["1610", "enel legend", "eneru legend", "kami eneru clash of the great pirate era fairy vearth", "kami enel 6*", "enel 6*"],
-  
   "1619":["1619", "ray 6+", "rayleigh 6+", "ray 6*+", "6+ ray", "rayleigh 6*+", "rayleigh legend plus", "dark king silvers rayleigh right hand of the pirate king"],
-  
-  "1652":["1652", "neko", "nekomamushi", "neko legend", "nekomamushi legend", "neko 6*", "nekomamushi 6*", "neko psy", "not cat viper", "cat mink", "lasagna", "lasagna cat", "goronyaro"],
-
-  "1658":["1658", "kanjuro rr", "kanjuro dex"],
-  
-  "1663":["1663", "rob lucci life return cp9's strongest", "rob lucci 6*+", "lucci str 6+", "str lucci 6+", "lucci legend plus", "lucci v1 6+"],
-  
+  "1652":["1652", "neko", "nekomamushi", "neko legend", "nekomamushi legend", "neko 6*", "nekomamushi 6*", "king of the night nekomamushi", "neko psy", "not cat viper", "cat mink", "lasagna cat", "garfield", "goronyaro"],
+  "1663":["1663", "rob lucci life return cp9's strongest", "rob lucci 6*+", "rob lucci 6+", "lucci str 6+", "str lucci 6+", "lucci legend plus", "lucci v1 6+"],
   "1698":["1698", "magellan legend", "magellan dex", "magellan 6*", "magellan hell's ruler"],
-  
   "1707":["1707", "shanks 6+", "shanks 6*+", "red hair shanks four emperors", "shanks legend plus", "still not a good shanks"],
-  
-  "1747":["1747", "boa hancock strawhat luffy's accomplice", "boa hancock 6* v2", "boa legend v2", "boa legend psy", "boa v2", "korea boa"],
-  
-  "1751":["1751", "law legend v2", "law 6* v2", "law qck", "trafalgar law legend v2", "trafalgar law 6* v2", "warlord of the sea trafalgar law aim for joker", "law injection shot", "law striker", "korea law"],
-  
+  "1747":["1747", "boa hancock strawhat luffy's accomplice", "boa hancock 6* v2", "boa legend v2", "boa legend psy", "korea boa", "boa v2"],
+  "1751":["1751", "law legend v2", "law 6* v2", "law qck", "trafalgar law legend v2", "trafalgar law 6* v2", "warlord of the sea trafalgar law aim for joker", "law injection shot", "law striker", "korea law", "law v2"],
   "1763":["1763", "human beast lucci world government monster", "lucci v2", "lucci legend v2", "lucci qck", "lucci 6* v2", "rob lucci v2"],
   "1764":["1764", "kuzan former navy hq greatest military power", "kuzan+", "kuzan 6+", "aokiji+", "aokiji 6+", "kuzan 6*+", "kuzan superevo", "aokiji superevo"],
-
-  
-  "1794":["1794", "lucy legend", "sabo legend v2", "lucy 6*"],
-  
-  "1816":["1816", "ace 6+", "sw ace 6*+", "ace 6*+", "portgas d. ace the sun that will destroy the darkness", "ace legend plus", "ace superevo", "ace+"],
-  
-  "1832":["1832", "vinsmoke judge", "vinsmoke jajji", "vinsmoke judge germa 66 science combat force", "judge", "judge legend", "judge 6*", "jajji"],
-  
+  "1794":["1794", "lucy corrida coliseum champion", "lucy legend", "sabo legend v2", "lucy 6*", "lucy sabo", "lucy str"],
+  "1808":["1808", "hawk eyes mihawk the strongest swordsman standing on top of the world", "mihawk tm", "mihawk str", "tmhawk"],
+  "1816":["1816", "ace 6+", "sw ace 6+", "sw ace 6*+", "ace 6*+", "portgas d. ace the sun that will destroy the darkness", "ace legend plus", "ace superevo", "ace+", "sw ace+"],
+  "1832":["1832", "vinsmoke judge", "vinsmoke jajji", "vinsmoke judge germa 66 science combat force", "judge", "judge legend", "judge 6*", "jajji", "jajji 6*", "jajji legend"],
   "1847":["1847", "sengoku+", "sengoku 6*+", "sengoku 6+", "sengoku the buddha marine fleet admiral", "worst superevo", "goku+"],
-  
-  "1869":["1869", "issho next generation navy hq greatest military power", "fujitora v2", "fuji legend v2", "fuji 6* v2"],
-  
-  "1880":["1880", "hody jones false crusader rampaging recklessly", "hody+", "hody jones 6*+", "hody 6+", "hody 6*+", "hody legend plus"],
-  "1881":["1881", "hawk eyes mihawk the black blade yoru", "inthawk+", "inthawk 6*+", "inthawk 6+", "mihawk legend plus"],
-  "1883":["1883", "dark king rayleigh an old soldier watching over an era", "ray v2", "ray 6* v2", "rayleigh legend v2", "ray legend v2"],
-
-  "1910":["1910", "heavenly demon doflamingo ruler of the bird cage", "doffy legend v2", "doflamingo legend v2", "doffy 6* v2"],
-
-  "1916":["1916", "luffy tm", "luffy tm g4", "tm g4", "g4 tm"],
-  
+  "1869":["1869", "issho next generation navy hq greatest military power", "fujitora v2", "fuji legend v2", "fuji 6* v2", "fuji v2"],
+  "1880":["1880", "hody jones false crusader rampaging recklessly", "hody+", "hody jones 6+", "hody jones 6*+", "hody 6+", "hody 6*+", "hody legend plus"],
+  "1881":["1881", "hawk eyes mihawk the black blade yoru", "inthawk+", "inthawk 6*+", "inthawk 6+", "mihawk legend plus", "mihawk legend 6+"],
+  "1883":["1883", "dark king rayleigh an old soldier watching over an era", "ray v2", "rayleigh v2", "ray 6* v2", "rayleigh legend v2", "ray legend v2"],
+  "1910":["1910", "heavenly demon doflamingo ruler of the bird cage", "doffy legend v2", "doflamingo legend v2", "doffy 6* v2", "doffy v2", "doflamingo v2"],
+  "1916":["1916", "monkey d. luffy gear 4 the natural enemy of god", "luffy tm", "luffy tm g4", "tm g4", "g4 tm"],
   "1921":["1921", "pirate hunter zoro the strawhat pirates reborn", "zoro 6*+", "zoro 6+", "zoro legend plus", "zoro+", "ichidai sanzen daisen sekai"],
   "1922":["1922", "law qck 6*+", "law qck 6+", "law v2 6+", "law v2 6*+", "trafalgar law the clan of d", "korea law 6*+"],
-  
-  "1927":["1927", "sir crocodile remains of an utopian dream", "croco 6*+", "crocodile 6*+", "thejoselu8 6*+", "6+ croc"],
-  "1928":["1928", "bartolomeo the cannibal straw hat grand fleet - son's cup", "barto 6*+", "bartolomeo 6*+", "6+ barto"],
-  
+  "1927":["1927", "sir crocodile remains of an utopian dream", "croco 6*+", "crocodile 6*+", "thejoselu8 6*+", "6+ croc", "croco 6+"],
+  "1928":["1928", "bartolomeo the cannibal straw hat grand fleet - son's cup", "barto 6*+", "bartolomeo 6*+", "6+ barto", "barto 6+"],
   "1935":["1935", "franky future country's super weapon", "franky legend", "franky 6*", "franky megazord"],
-  
-  "1941":["1941", "ace tm", "ace treasure map", "ace aventura"],
-  
+  "1941":["1941", "fire fist ace spiritual flames", "ace tm"],
   "1951":["1951", "nico robin archaeologist revealing the void century", "robin legend", "nico robin 6*", "6* robin", "robin 6*"],
-  
-  "1985":["1985", "luffy & ace", "lufface", "luffy & ace legend", "lufface legend"]
+  "1985":["1985", "luffy & ace pirates rising", "luffy & ace", "lufface", "luffyace", "ace & luffy", "luffy & ace legend", "lufface legend", "lace"],
+  "2000":["2000", "sanji & zoro strawhat pirates unmatched duo", "zoranji", "zanji", "zoronji", "zonji", "sanjoro", "zanjoro"],
+  "2001":["2001", "trafalgar law ex-warlord of the sea", "law psy 6+", "law v1 6+", "law legend psy 6*+", "law legend v1 6*+"],
+  "2007":["2007", "red hair shanks yonko changing the fate of the world", "shanks v2", "shanks legend v2", "shanks legend int"],
+  "2023":["2023", "sakazuki decisive deadly battle", "akainu v2", "akainu legend v2", "akainu legend int"],
+  "2025":["2025", "kuzan decisive deadly battle", "aokiji v2", "aokiji legend v2", "aokiji legend psy"],
+  "2034":["2034", "borsalino havy hq greatest military power", "kizaru 6+", "kizaru 6*+", "kizaru superevo", "borsalino 6+"],
+  "2035":["2035", "buggy the star clown", "buggy d. clown", "shichibukai buggy", "delivery buggy", "buggy 6+", "buggy 6*+", "buggy superevo", "baggy 6+"],
+  "2048":["2048", "koala the revolutionary army exposing the darkness", "koala lrr", "koala limited rr", "koala qck"],
+  "2066":["2066", "knight of the sea jinbe strawhat luffy's accomplice", "jinbe 6+", "jinbe 6*+", "6+ jinbe", "jinbe superevo", "good jinbe"],
+  "2074":["2074", "strawhat luffy the potential power of the gomu gomu no mi", "g4 v2", "v2 g4", "gear 4th v2", "luffy gear 4th anni", "luffy 4th anni", "luffy gear power", "luffy legend v3"],
+  "2076":["2076", "nami the cat burglar deceiving the world", "nami legend", "nami 6*", "nami bath", "nami why put a battle scene when you can do cheap fanservice to win money"],
+  "2099":["2099", "legend tesoro", "tesoro legend", "tesoro 6*", "tesoro gold golem", "tesoro qck"],
+  "2109":["2109", "charlotte linlin the great pirate big mom", "big mom tm", "big mom", "linlin"]
+
 }
