@@ -364,12 +364,14 @@ client.on('message', msg => {
       var invalidid2 = 'Your ID must have 9 digits, no spaces nor commas';
       var invalidserver = 'Specify Japan or Global after your ID. Remember to use simple spaces, not commas';
       var validsavemsg = ' has saved his ID/Server: ';
+      var invalidbackup = "There is a problem with the Backup channel. You may lose all data, keep a copy somewhere safe";
     }
     else {
       var invalidid1 = 'Pon tu ID después de !guarda. 9 números seguidos';
       var invalidid2 = 'Tu ID debe tener 9 dígitos, sin espacios ni comas';
       var invalidserver = 'Especifica Japan o Global después de tu ID. Recuerda separar con espacios, sin comas';
       var validsavemsg = ' ha guardado su ID/Servidor: ';
+      var invalidbackup = "Hay un problema con el canal de Backup. Puede ser que tus datos se pierdan, haz una copia segura";
     }
     
     if(isNaN(args[0]) == true) return msg.reply(invalidid1)
@@ -409,6 +411,16 @@ client.on('message', msg => {
     id_list[msg.author.username] = content
     
     msg.channel.send(msg.author.username + validsavemsg + args[0] + " / " + args[1])
+    
+    let dbchan = client.channels.find("id", dbchanID);
+    if(dbchan) {
+      dbchan.send("PreloadID " + msg.author.username + ' ; ' + content.id + ' ; ' + content.server + ' ; ' + content.info + ' ; ' + content.link)
+      //!PreloadID Username ; ID ; Server ; Text ; http---.png;; 
+    }
+    else {
+      msg.reply(invalidbackup)
+    }
+    
   }
   
 //------------------------------------------------------------------------- END SAVE
@@ -473,6 +485,7 @@ client.on('message', msg => {
   
   if(command == 'ihave' || command == 'tengo') {
     var tostore = msg.content.slice(7).toLowerCase();
+    if(tostore == '') return msg.reply("Write the important captains you have, separated by commas!")
     tostore = tostore.split(', ');
     var stored = [];
     var correct = 0;
@@ -498,6 +511,15 @@ client.on('message', msg => {
         }
       }
       msg.reply("Updated your list with: " + correct + ' captains!')
+    }
+    
+    let dbchan = client.channels.find("id", dbchanID);
+    if(dbchan) {
+      dbchan.send("PreloadPJ " + useri + ' ; ' + lf_list[useri])
+      //!PreloadPJ User ; 0998,0999,1000,1001,1002;;
+    }
+    else {
+      msg.reply("There is a problem with the Backup channel. You may lose all data, keep a copy somewhere safe")
     }
     
   }
@@ -568,8 +590,8 @@ client.on('message', msg => {
             let prelchan = client.channels.find("id", prelchanID);
             if(prelchan) {
               var lmsg = messages.array()
-              for(m = 0; m < lmsg.length; m++) {
-                prelchan.send(lmsg[m].content)
+              for(m = lmsg.length-1; m >= 0; m--) {
+                prelchan.send("!" + lmsg[m].content)
               }
             }
             else {
