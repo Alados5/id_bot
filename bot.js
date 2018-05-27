@@ -242,7 +242,7 @@ client.on('message', msg => {
 //------------------------------------------------------------------------- START HELP
   
   if(command == 'help') {
-    msg.channel.send('Commands (EN): !save, !show, !ihave, !lookingfor');
+    msg.channel.send('Commands (EN): !backup, !save, !show, !ihave, !lookingfor');
     msg.channel.send({embed: {
       color: 16757760,
       author: {
@@ -291,6 +291,10 @@ client.on('message', msg => {
           "You can only look for one character per call."+
           "\n This function is completely independent from !show"+
           "\n Example: *!lookingfor Lucy Legend* \n \n -"
+        },
+        {
+          name: "!backup",
+          value: "Reload all saved data. Use this when the bot forgets data you know existed. \n \n -"
         }
       ]
     }})
@@ -299,7 +303,7 @@ client.on('message', msg => {
     
   if(command == 'ayuda') {
     //message.reply('text');
-    msg.channel.send('Comandos (ES): !guarda, !muestra, !tengo, !buscoa');
+    msg.channel.send('Comandos (ES): !backup, !guarda, !muestra, !tengo, !buscoa');
     msg.channel.send({embed: {
       color: 16757760,
       author: {
@@ -348,6 +352,10 @@ client.on('message', msg => {
           "Sólo se puede buscar a un personaje por llamada."+
           "\n Esta función es totalmente independiente de !muestra"+
           "\n Ejemplo: *!buscoa Lucy Legend* \n \n -"
+        },
+        {
+          name: "!backup",
+          value: "Recarga todos los datos guardados. Usa este comando cuando el bot se olvide de algo que sabes que existía. \n \n -"
         }
       ]
     }})
